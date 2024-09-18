@@ -12,6 +12,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
 import { HttpClientModule, provideHttpClient } from '@angular/common/http';
 import { MovimentiDetailComponent } from './components/movimenti-detail/movimenti-detail.component';
+import { MovimentiComponent } from './pages/movimenti/movimenti.component';
+import { RicaricaComponent } from './pages/ricarica/ricarica.component';
+import { BonificoComponent } from './pages/bonifico/bonifico.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { MovimentiDetailComponent } from './components/movimenti-detail/moviment
     HomepageComponent,
     RegisterComponent,
     LoginComponent,
-    MovimentiDetailComponent
+    MovimentiDetailComponent,
+    MovimentiComponent,
+    RicaricaComponent,
+    BonificoComponent
   ],
   imports: [
     BrowserModule,
