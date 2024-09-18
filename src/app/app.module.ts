@@ -11,13 +11,15 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
 import { HttpClientModule, provideHttpClient } from '@angular/common/http';
+import { MovimentiDetailComponent } from './components/movimenti-detail/movimenti-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomepageComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    MovimentiDetailComponent
   ],
   imports: [
     BrowserModule,
