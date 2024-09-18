@@ -1,11 +1,46 @@
-<div class="container-fluid">
-  <div class="col-8-md">
+<div class="d-flex card-custom border border-secondary rounded">
+  <div class="col-8">
     {{ movimentoMock.Descrizione }}
   </div>
-  <div class="col-4-md">
-    <div class="row">{{ movimentoMock.DataMovimento }}</div>
-    <div class="row">
+  <div class="col-3">
+    <div class="">{{ movimentoMock.DataMovimento }}</div>
+    <div class="">
       {{ movimentoMock.Importo }}
     </div>
   </div>
+  <button
+    type="button"
+    class="btn btn-primary col-1 btn-open"
+    (click)="openDetailCard(content)"
+  >
+    Apri dettaglio
+  </button>
 </div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Dettaglio movimento</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <p>Codice Movimento: {{ movimentoMock.IdMovimento }}</p>
+    <p>Data Movimento: {{ movimentoMock.DataMovimento }}</p>
+    <p>Causale: {{ movimentoMock.Descrizione }}</p>
+    <p>Importo movimento: {{ movimentoMock.Importo }}</p>
+    <p>Tipologia movimento: {{ movimentoMock.Categoria.Nome }}</p>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-secondary"
+      (click)="modal.close('Close click')"
+    >
+      Chiudi
+    </button>
+  </div>
+</ng-template>
