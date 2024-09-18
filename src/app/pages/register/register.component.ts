@@ -40,7 +40,6 @@ export class RegisterComponent implements OnInit, OnDestroy{
   registerForm = this.fb.group({
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
-    picture: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.pattern(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/)]]
   })
@@ -48,8 +47,7 @@ export class RegisterComponent implements OnInit, OnDestroy{
   async register(){
     let user: User = {
       firstName: this.registerForm.get("firstName")?.value || '',
-      lastName: this.registerForm.get("lastName")?.value || '',
-      picture: this.registerForm.get("picture")?.value || ''
+      lastName: this.registerForm.get("lastName")?.value || ''
     };
 
     let credentials: UserIdentity = {

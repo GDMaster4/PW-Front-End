@@ -68,36 +68,6 @@
                 <div class="col-12">
                   <div class="form-floating mb-2">
                     <input
-                      type="text"
-                      class="form-control"
-                      name="picture"
-                      id="picture"
-                      placeholder="Last Name"
-                      required
-                      formControlName="picture"
-                      [ngClass]="{
-                        'invalid-field':
-                          registerForm.get('picture')!.invalid &&
-                          registerForm.get('picture')!.touched
-                      }"
-                    />
-                    <label for="picture" class="form-label"
-                      >Link all'immagine di profilo</label
-                    >
-                    <p
-                      class="fs-6 mb-0 text-danger"
-                      *ngIf="
-                        registerForm.get('picture')?.errors &&
-                        registerForm.get('picture')?.touched
-                      "
-                    >
-                      Il link all'immagine è obbligatorio
-                    </p>
-                  </div>
-                </div>
-                <div class="col-12">
-                  <div class="form-floating mb-2">
-                    <input
                       type="email"
                       class="form-control"
                       name="email"

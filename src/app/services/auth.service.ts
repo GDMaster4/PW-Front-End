@@ -77,7 +77,6 @@ export class AuthService {
     const payload = JSON.stringify({
       "firstName" : userData.firstName,
       "lastName": userData.lastName,
-      "picture": userData.picture,
       "username": userCredentials.username,
       "password": userCredentials.password
     })
