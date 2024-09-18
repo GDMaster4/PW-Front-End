@@ -1,1 +1,10 @@
-<router-outlet></router-outlet>
+<nav class="navbar navbar-dark bg-primary mb-3">
+    <div class="container-fluid">
+    <div> <Button type="button" [routerLink]="['/home']" >HOMEPAGE</Button></div>
+    <div> <Button type="button" [routerLink]="['/movimenti']">MOVIMENTI</Button></div>
+    <div> <Button type="button" [routerLink]="['/ricarica']">RICARICA</Button></div>
+    <div> <Button type="button" [routerLink]="['/bonifico']">BONIFICO</Button></div>
+    <div> <Button type="button" (click)="logout()">LOGOUT</Button></div>
+    </div>
+  </nav>
+  <router-outlet></router-outlet>

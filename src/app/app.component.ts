@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Route } from '@angular/router';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'BankingApp';
+  constructor(private authsrv: AuthService){
+
+  }
+  logout(){
+    this.authsrv.logout()
+  } 
 }
