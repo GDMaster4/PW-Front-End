@@ -1,15 +1,15 @@
 import { Component, inject, Input, TemplateRef, ViewEncapsulation } from '@angular/core';
 import { Movimento } from '../../entities/movimenti.entity';
-import { TipoMov } from '../../entities/tipologiaMov.entity';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-movimenti-detail',
-  templateUrl: './movimenti-detail.component.html',
+  templateUrl: './movimento-detail.component.html',
   encapsulation: ViewEncapsulation.None,
-  styleUrls: ['./movimenti-detail.component.css']
+  styleUrls: ['./movimento-detail.component.css']
 })
-export class MovimentiDetailComponent {
+export class MovimentiDetailComponent
+{
   constructor(private modalSrv : NgbModal){}
 
 //todo: da togliere movimentoMock e scommentare input quando abbiamo chiamata ad API
