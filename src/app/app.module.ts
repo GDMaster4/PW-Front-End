@@ -1,20 +1,23 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDateAdapter, NgbDateParserFormatter, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
-import { HttpClientModule, provideHttpClient } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MovimentiDetailComponent } from './components/movimenti-detail/movimenti-detail.component';
 import { MovimentiComponent } from './pages/movimenti/movimenti.component';
 import { RicaricaComponent } from './pages/ricarica/ricarica.component';
 import { BonificoComponent } from './pages/bonifico/bonifico.component';
+import { NavUserComponent } from './components/nav-user/nav-user.component';
+import { AuthInterceptor } from './utils/auth.interceptor';
+import { IfAuthenticatedDirective } from './directives/if-authenticated.directive';
+import { DateAdapter, DateParserFormatter } from './utils/Datepicker-adapter';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,9 @@ import { BonificoComponent } from './pages/bonifico/bonifico.component';
     MovimentiDetailComponent,
     MovimentiComponent,
     RicaricaComponent,
-    BonificoComponent
+    BonificoComponent,
+    NavUserComponent,
+    IfAuthenticatedDirective
   ],
   imports: [
     BrowserModule,
@@ -37,8 +42,16 @@ import { BonificoComponent } from './pages/bonifico/bonifico.component';
     HttpClientModule
   ],
   providers: [
-    AuthService,
-    provideHttpClient()
+    {
+      provide: NgbDateAdapter,
+      useClass: DateAdapter
+    },
+    {
+      provide: NgbDateParserFormatter,
+      useClass: DateParserFormatter
+    },
+    {provide: HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true},
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

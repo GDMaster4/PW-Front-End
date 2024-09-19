@@ -7,12 +7,13 @@ import { AuthService } from './services/auth.service';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
-  title = 'BankingApp';
-  constructor(private authsrv: AuthService){
+export class AppComponent
+{
+  currentUser$ = this.authSrv.currentUser$;
 
-  }
+  constructor(protected authSrv: AuthService){ }
+
   logout(){
-    this.authsrv.logout()
+    this.authSrv.logout()
   } 
 }
