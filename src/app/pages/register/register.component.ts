@@ -11,8 +11,8 @@ import { UserIdentity } from '../../entities/useridentity.entity';
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
-export class RegisterComponent implements OnInit, OnDestroy{
-
+export class RegisterComponent implements OnInit, OnDestroy
+{
   constructor(
     protected fb : FormBuilder,
     protected authSrv: AuthService,
@@ -22,7 +22,8 @@ export class RegisterComponent implements OnInit, OnDestroy{
   registerError = ''
   protected destroyed$ = new Subject<void>();
 
-  ngOnInit(): void {
+  ngOnInit(): void
+  {
     this.registerForm.valueChanges
       .pipe(
         takeUntil(this.destroyed$)
@@ -32,7 +33,8 @@ export class RegisterComponent implements OnInit, OnDestroy{
       });
   }
 
-  ngOnDestroy(): void {
+  ngOnDestroy(): void
+  {
     this.destroyed$.next();
     this.destroyed$.complete();
   }
@@ -44,7 +46,8 @@ export class RegisterComponent implements OnInit, OnDestroy{
     password: ['', [Validators.required, Validators.pattern(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/)]]
   })
 
-  async register(){
+  async register()
+  {
     let user: User = {
       firstName: this.registerForm.get("firstName")?.value || '',
       lastName: this.registerForm.get("lastName")?.value || ''
