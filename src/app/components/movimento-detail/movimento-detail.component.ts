@@ -1,5 +1,5 @@
 import { Component, inject, Input, TemplateRef, ViewEncapsulation } from '@angular/core';
-import { Movimento } from '../../entities/movimenti.entity';
+import { Movimento } from '../../entities/movimento.entity';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({

@@ -4,7 +4,6 @@ import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { User } from '../../entities/user.entity';
-import { UserIdentity } from '../../entities/useridentity.entity';
 
 @Component({
   selector: 'app-register',
@@ -40,23 +39,21 @@ export class RegisterComponent implements OnInit, OnDestroy
   }
 
   registerForm = this.fb.group({
-    firstName: ['', Validators.required],
-    lastName: ['', Validators.required],
+    nomeTitolare: ['', Validators.required],
+    cognomeTitolare: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.pattern(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/)]]
   })
 
   async register()
   {
-    let user: User = {
-      firstName: this.registerForm.get("firstName")?.value || '',
-      lastName: this.registerForm.get("lastName")?.value || ''
-    };
-
-    let credentials: UserIdentity = {
-      username: this.registerForm.get("email")?.value || '',
+    const user: User = {
+      nomeTitolare: this.registerForm.get("nomeTitolare")?.value || '',
+      cognomeTitolare: this.registerForm.get("cognomeTitolare")?.value || '',
+      email: this.registerForm.get("email")?.value || '',
       password: this.registerForm.get("password")?.value || ''
     };
-    const newUser = await this.authSrv.register(user, credentials);
+
+    await this.authSrv.register(user);
   }
 }

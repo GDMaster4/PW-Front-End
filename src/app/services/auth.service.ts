@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, map, Observable, of, tap, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import { JwtService } from './jwt.service';
-import { UserIdentity } from '../entities/useridentity.entity';
 import { User } from '../entities/user.entity';
 
 @Injectable({
@@ -75,44 +74,19 @@ export class AuthService
   /**
    *
    * @param userData User object
-   * @param userCredentials User credentials
    */
-  register(userData: User, userCredentials: UserIdentity): void
+  register(userData: User): void
   {
-    const headers = new HttpHeaders().set('Content-type', 'application/json; charset=utf-8');
-    const payload = JSON.stringify({
-      "firstName" : userData.firstName,
-      "lastName": userData.lastName,
-      "username": userCredentials.username,
-      "password": userCredentials.password
-    })
-
-    this.http.post<User>("/api/user/register", payload, {headers: headers})
-      .subscribe(
-        {
-          next: (response: User) => {
-            this._currentUser$.next(response);
+    this.http.post<User>("/api/user/register", userData)
+      .subscribe(user=>{
+            this._currentUser$.next(user);
             this.router.navigate(['/login'])
             // Perform additional actions like redirecting the user or storing the token
           },
-          error: (err) => {
+          error=> {
             // Handling errori
-            if (err.status === 400 && err.error.message || err.error.error) {
-              if(err.error.error && err.error.message){
-                return alert("Attenzione: " + err.error.message);
-              }
-              else if(err.error.error){
-                return alert("Attenzione: " + err.error.error)
-              }
-              return alert("Errore generico")
-            }
-            else if (err.status === 500) {
-              return alert("Server Error: Please try again later.");
-            } else {
-              return alert("Error: " + err.message);
-            }
+            console.error(error);
           }
-        }
       );
   }
 }

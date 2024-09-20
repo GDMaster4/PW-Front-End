@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Movimento } from '../entities/movimenti.entity';
+import { Movimento } from '../entities/movimento.entity';
 import { AuthService } from './auth.service';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
