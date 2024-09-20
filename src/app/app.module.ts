@@ -18,6 +18,7 @@ import { NavUserComponent } from './components/nav-user/nav-user.component';
 import { AuthInterceptor } from './utils/auth.interceptor';
 import { IfAuthenticatedDirective } from './directives/if-authenticated.directive';
 import { DateAdapter, DateParserFormatter } from './utils/Datepicker-adapter';
+import { MovimentoComponent } from './components/movimento/movimento.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { DateAdapter, DateParserFormatter } from './utils/Datepicker-adapter';
     RicaricaComponent,
     BonificoComponent,
     NavUserComponent,
-    IfAuthenticatedDirective
+    IfAuthenticatedDirective,
+    MovimentoComponent
   ],
   imports: [
     BrowserModule,
