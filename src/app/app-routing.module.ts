@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
-import { MovimentiComponent } from './pages/movimenti/movimenti.component';
+import { MovimentiComponent } from './components/movimenti/movimenti.component';
 import { RicaricaComponent } from './pages/ricarica/ricarica.component';
 import { BonificoComponent } from './pages/bonifico/bonifico.component';
 
