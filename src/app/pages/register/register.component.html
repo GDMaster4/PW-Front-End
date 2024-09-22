@@ -14,23 +14,23 @@
                     <input
                       type="text"
                       class="form-control"
-                      name="firstName"
-                      id="firstName"
+                      name="nomeTitolare"
+                      id="nomeTitolare"
                       placeholder="Nome"
                       required
-                      formControlName="firstName"
+                      formControlName="nomeTitolare"
                       [ngClass]="{
                         'invalid-field':
-                          registerForm.get('firstName')!.invalid &&
-                          registerForm.get('firstName')!.touched
+                          registerForm.get('nomeTitolare')!.invalid &&
+                          registerForm.get('nomeTitolare')!.touched
                       }"
                     />
-                    <label for="firstName" class="form-label">Nome</label>
+                    <label for="nomeTitolare" class="form-label">Nome</label>
                     <p
                       class="fs-6 mb-0 text-danger"
                       *ngIf="
-                        registerForm.get('firstName')?.errors &&
-                        registerForm.get('firstName')?.touched
+                        registerForm.get('nomeTitolare')?.errors &&
+                        registerForm.get('nomeTitolare')?.touched
                       "
                     >
                       Il nome è obbligatorio
@@ -42,23 +42,23 @@
                     <input
                       type="text"
                       class="form-control"
-                      name="lastName"
-                      id="lastName"
+                      name="cognomeTitolare"
+                      id="cognomeTitolare"
                       placeholder="Last Name"
                       required
-                      formControlName="lastName"
+                      formControlName="cognomeTitolare"
                       [ngClass]="{
                         'invalid-field':
-                          registerForm.get('lastName')!.invalid &&
-                          registerForm.get('lastName')!.touched
+                          registerForm.get('cognomeTitolare')!.invalid &&
+                          registerForm.get('cognomeTitolare')!.touched
                       }"
                     />
-                    <label for="lastName" class="form-label">Cognome</label>
+                    <label for="cognomeTitolare" class="form-label">Cognome</label>
                     <p
                       class="fs-6 mb-0 text-danger"
                       *ngIf="
-                        registerForm.get('lastName')?.errors &&
-                        registerForm.get('lastName')?.touched
+                        registerForm.get('cognomeTitolare')?.errors &&
+                        registerForm.get('cognomeTitolare')?.touched
                       "
                     >
                       Il cognome è obbligatorio

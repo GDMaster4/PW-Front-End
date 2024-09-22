@@ -9,14 +9,8 @@ import { catchError, Subject, takeUntil, throwError } from 'rxjs';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent implements OnInit, OnDestroy{
-
-  constructor(
-    protected fb: FormBuilder,
-    protected authSrv: AuthService,
-    protected router: Router
-  ) {}
-
+export class LoginComponent implements OnInit, OnDestroy
+{
   loginForm = this.fb.group({
     username: ['', Validators.required],
     password: ['', Validators.required]
@@ -26,7 +20,10 @@ export class LoginComponent implements OnInit, OnDestroy{
 
   protected destroyed$ = new Subject<void>();
 
-  ngOnInit(): void {
+  constructor( protected fb: FormBuilder, protected authSrv: AuthService, protected router: Router) {}
+
+  ngOnInit()
+  {
     this.loginForm.valueChanges
       .pipe(
         takeUntil(this.destroyed$)
@@ -36,7 +33,8 @@ export class LoginComponent implements OnInit, OnDestroy{
       });
   }
 
-  ngOnDestroy(): void {
+  ngOnDestroy()
+  {
     this.destroyed$.next();
     this.destroyed$.complete();
   }
@@ -45,8 +43,10 @@ export class LoginComponent implements OnInit, OnDestroy{
    * Method checking if login form is balid and calls for authservice to validate login parameters,
    * then navigates to /percorsi if ok
    */
-  login() {
-    if (this.loginForm.valid) {
+  login()
+  {
+    if (this.loginForm.valid)
+    {
       const { username, password } = this.loginForm.value;
       this.authSrv.login(username!, password!)
         .pipe(
@@ -61,5 +61,4 @@ export class LoginComponent implements OnInit, OnDestroy{
         })
     }
   }
-
 }
