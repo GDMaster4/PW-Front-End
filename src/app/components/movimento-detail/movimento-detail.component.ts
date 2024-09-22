@@ -1,34 +1,43 @@
-import { Component, inject, Input, TemplateRef, ViewEncapsulation } from '@angular/core';
+import { Component, Input, TemplateRef } from '@angular/core';
 import { Movimento } from '../../entities/movimento.entity';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-movimenti-detail',
   templateUrl: './movimento-detail.component.html',
-  encapsulation: ViewEncapsulation.None,
   styleUrls: ['./movimento-detail.component.css']
 })
 export class MovimentiDetailComponent
 {
-  constructor(private modalSrv : NgbModal){}
+  @Input()
+  movimento:Movimento | null=null;
 
-//todo: da togliere movimentoMock e scommentare input quando abbiamo chiamata ad API
-//  @Input() detail: Movimento;
-  movimentoMock : Movimento = {
-    IdMovimento: '123ujhv923',
-    IdCC: '13123123ccc',
-    Descrizione: 'Test gesù bambino',
-    DataMovimento: new Date('2024-09-01T00:00:00'),
-    Importo: -123.45,
-    Categoria: {
-      IdTipoMov: '112233aa',
-      Nome: 'Bonifico Ordinario',
-      Tipologia: 'USCITA'
-    }
+	closeResult = '';
+  constructor(protected modalService: NgbModal, protected fb: FormBuilder){}
+
+  open(content: TemplateRef<any>)
+  {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' })
+    .result.then(
+      (result) => {
+        this.closeResult = `Closed with: ${result}`;
+      },
+      (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;       
+      },
+    );
   }
 
-  //*Chiamata per aprire il modale con i dettagli del movimento
-  openDetailCard(content: TemplateRef<any>){
-    this.modalSrv.open(content);
-  }
+	private getDismissReason(reason: any): string
+  {
+		switch (reason) {
+			case ModalDismissReasons.ESC:
+				return 'by pressing ESC';
+			case ModalDismissReasons.BACKDROP_CLICK:
+				return 'by clicking on a backdrop';
+			default:
+				return `with: ${reason}`;
+		}
+	}
 }

@@ -1,46 +1,33 @@
-<div class="d-flex card-custom border border-secondary rounded">
-  <div class="col-8">
-    {{ movimentoMock.Descrizione }}
-  </div>
-  <div class="col-3">
-    <div class="">{{ movimentoMock.DataMovimento }}</div>
-    <div class="">
-      {{ movimentoMock.Importo }}
-    </div>
-  </div>
-  <button
-    type="button"
-    class="btn btn-primary col-1 btn-open"
-    (click)="openDetailCard(content)"
-  >
-    Apri dettaglio
-  </button>
-</div>
-
 <ng-template #content let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title">Dettaglio movimento</h4>
-    <button
-      type="button"
-      class="btn-close"
-      aria-label="Close"
-      (click)="modal.dismiss('Cross click')"
-    ></button>
-  </div>
-  <div class="modal-body">
-    <p>Codice Movimento: {{ movimentoMock.IdMovimento }}</p>
-    <p>Data Movimento: {{ movimentoMock.DataMovimento }}</p>
-    <p>Causale: {{ movimentoMock.Descrizione }}</p>
-    <p>Importo movimento: {{ movimentoMock.Importo }}</p>
-    <p>Tipologia movimento: {{ movimentoMock.Categoria.Nome }}</p>
-  </div>
-  <div class="modal-footer">
-    <button
-      type="button"
-      class="btn btn-secondary"
-      (click)="modal.close('Close click')"
-    >
-      Chiudi
-    </button>
-  </div>
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Moviment Detail</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+    <div class="row">
+      <label for="conto">Conto Corrente :</label>
+      <label class="conto">{{movimento!.contoCorrente.iban}}</label>
+      <label for="data">Data esecuzione movimento:</label>
+      <label class="data">{{movimento!.data}}</label>
+    </div>
+    <div class="row">
+      <label for="importo">Importo :</label>
+      <label class="importo">{{movimento!.importo}}</label>
+      <label for="saldo">Saldo :</label>
+      <label class="saldo">{{movimento!.saldo}}</label>
+    </div>
+    <div class="row">
+      <label for="categoria">Categoria del movimento :</label>
+      <label class="categoria">{{movimento!.categoria.tipologia}}</label>
+    </div>
+    <div class="row">
+      <label for="descrizione">Descrizione del movimento :</label>
+      <textarea class="descrizione" disabled="true">
+        {{movimento!.descrizioneEstesa}}
+      </textarea>
+    </div>
+	</div>
 </ng-template>
+<button (click)="open(content)">
+  Dettaglio Movimento
+</button>
