@@ -1,10 +1,13 @@
+import { Categoria } from "./categoria.entity";
+import { Conto } from "./conto.entity";
+
 export interface Movimento
 {
   movimentoId: string,
-  contoCorrenteID: string,
+  contoCorrente: Conto,
   data: string,
   importo: number,
   saldo: number,
-  categoriaMovimentoID: string,
+  categoria: Categoria,
   descrizioneEstesa: string
 }
