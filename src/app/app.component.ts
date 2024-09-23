@@ -9,11 +9,12 @@ import { AuthService } from './services/auth.service';
 })
 export class AppComponent
 {
+  title = "Banking App";
   currentUser$ = this.authSrv.currentUser$;
 
   constructor(protected authSrv: AuthService){ }
 
   logout(){
     this.authSrv.logout()
-  } 
+  }
 }
