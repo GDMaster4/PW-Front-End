@@ -5,6 +5,7 @@ import { omitBy, isNil } from 'lodash';
 import { ReplaySubject, Subject, takeUntil, map, debounceTime, Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Movimento } from '../../entities/movimento.entity';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-homepage',
@@ -15,12 +16,13 @@ export class HomepageComponent implements OnInit,OnDestroy
 {
   protected updateQueryParams$ = new ReplaySubject<MovimentiFilters>();
 
+  currentUser$ = this.authSrv.currentUser$;
   conto$= this.contoSrv.conto$;
-  movimenti$= this.movSrv.movimenti$;
+  movimenti$= new Observable<Movimento[]>;
   protected destroyed$ = new Subject<void>();
 
   constructor(protected contoSrv:ContoService, protected movSrv:MovimentiService, protected router: Router,
-    protected activatedRoute: ActivatedRoute,) {}
+    protected activatedRoute: ActivatedRoute, protected authSrv:AuthService) {}
 
   ngOnInit(): void
   {
@@ -29,6 +31,10 @@ export class HomepageComponent implements OnInit,OnDestroy
         takeUntil(this.destroyed$),
         debounceTime(150)
       )
+      .subscribe ( conto=>{
+        this.movSrv.fetch(conto!.id!);
+        this.movimenti$=this.movSrv.movimenti$;
+      })
     this.updateQueryParams$
         .pipe(
           takeUntil(this.destroyed$),

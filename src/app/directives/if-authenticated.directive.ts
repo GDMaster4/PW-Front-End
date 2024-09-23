@@ -3,7 +3,7 @@ import { Subject, takeUntil } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 
 @Directive({
-  selector: '[IfAuthenticated]'
+  selector: '[ifAuthenticated]'
 })
 export class IfAuthenticatedDirective implements OnInit,OnDestroy
 {
