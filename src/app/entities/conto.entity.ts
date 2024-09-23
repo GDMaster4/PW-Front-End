@@ -2,7 +2,7 @@ import { User } from "./user.entity";
 
 export interface Conto
 {
-  contoCorrenteID?: string;
+  contoCorrenteID: string;
   user:User;
   dataApertura: string;
   iban:string;
