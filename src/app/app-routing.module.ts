@@ -5,6 +5,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { RicaricaComponent } from './pages/ricarica/ricarica.component';
 import { BonificoComponent } from './pages/bonifico/bonifico.component';
+import { ConfirmEmailComponent } from './pages/confirm-email/confirm-email.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path: 'bonifico',
     component:BonificoComponent
+  },
+  {
+    path: 'confirm',
+    component:ConfirmEmailComponent
   }
 ];
 
