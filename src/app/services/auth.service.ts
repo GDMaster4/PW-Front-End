@@ -20,29 +20,12 @@ export class AuthService
     protected router: Router
   ) {}
 
-
   /**
    * Method used to check if user has valid token and is not expired
    * @returns boolean value
    */
-  isLoggedIn()
-  {
-    if(this.jwt.hasToken())
-    {
-      let token = localStorage.getItem('authToken');
-      const payload = JSON.parse(atob(token!.split('.')[1]));
-      const isExpired = payload.exp < Date.now() / 1000;
-
-      if(isExpired){
-        this.logout();
-        return false;
-      }
-
-      return true;
-    }
-    else{
-      return false;
-    }
+  isLoggedIn() {
+    return this.jwt.hasToken();
   }
 
   /**
@@ -53,7 +36,6 @@ export class AuthService
    */
   login(email: string, password: string)
   {
-    console.log(email,password);
     return this.http.post<{user: User, token: string}>("/api/login", {email, password})
       .pipe(
         tap(res => this.jwt.setToken(res.token)),
@@ -89,5 +71,11 @@ export class AuthService
             console.error(error);
           }
       );
+  }
+
+  fetchUser()
+  {
+    this.http.get<User>("api/users/me")
+      .subscribe(user=>this._currentUser$.next(user));
   }
 }

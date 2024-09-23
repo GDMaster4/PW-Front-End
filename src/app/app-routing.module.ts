@@ -11,26 +11,26 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'login'
+    redirectTo: '/login'
   },
   {
-    path: 'register',
+    path: '/register',
     component: RegisterComponent
   },
   {
-    path: 'login',
+    path: '/login',
     component: LoginComponent
   },
   {
-    path: 'home',
+    path: '/home',
     component:HomepageComponent
   },
   {
-    path: 'ricarica',
+    path: '/ricarica',
     component:RicaricaComponent
   },
   {
-    path: 'bonifico',
+    path: '/bonifico',
     component:BonificoComponent
   },
   {

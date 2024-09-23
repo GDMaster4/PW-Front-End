@@ -37,11 +37,8 @@ export class MovimentiService
     let q=omitBy(filters,isNil);
   }
 
-  updateMov()
-  {
-  }
-
   add()
   {
+    
   }
 }
