@@ -49,15 +49,15 @@ export class LoginComponent implements OnInit, OnDestroy
     {
       const { username, password } = this.loginForm.value;
       this.authSrv.login(username!, password!)
-        .pipe(
-          catchError(err => {
-            this.loginError = err.error.message;
-            alert("Username o password errati")
-            return throwError(() => err);
+       .pipe(
+          catchError(err=>{
+            this.loginError=err.error.message;
+            return throwError(()=>err);
           })
         )
-        .subscribe(user => {
-          this.router.navigate(['/todo']);
+        .subscribe(user=>{
+          this.authSrv.fetchUser();
+          this.router.navigate(['/home']);
         })
     }
   }

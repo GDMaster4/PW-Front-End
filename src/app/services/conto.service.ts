@@ -7,7 +7,7 @@ import { AuthService } from './auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class ContiService
+export class ContoService
 {
   private _conto$ = new BehaviorSubject<Conto | null>(null);
   conto$ = this._conto$.asObservable();
