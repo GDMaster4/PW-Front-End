@@ -47,13 +47,14 @@ export class AuthService
 
   /**
    * Method used to send username and password to API and returns token if valid
-   * @param username
+   * @param email
    * @param password
    * @returns JWT token to be stored in localstorage
    */
-  login(username: string, password: string)
+  login(email: string, password: string)
   {
-    return this.http.post<{user: User, token: string}>("/api/user/login", {username, password})
+    console.log(email,password);
+    return this.http.post<{user: User, token: string}>("/api/login", {email, password})
       .pipe(
         tap(res => this.jwt.setToken(res.token)),
         tap(res => this._currentUser$.next(res.user)),
@@ -77,7 +78,7 @@ export class AuthService
    */
   register(userData: User): void
   {
-    this.http.post<User>("/api/user/register", userData)
+    this.http.post<User>("/api/register", userData)
       .subscribe(user=>{
             this._currentUser$.next(user);
             this.router.navigate(['/login'])
