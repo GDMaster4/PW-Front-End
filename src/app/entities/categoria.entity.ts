@@ -1,6 +1,6 @@
 export interface Categoria
 {
-    categoriaMovimentoID?: string,
+    categoriaMovimento: string,
     nomeCategoria: string,
     tipologia: string
 }

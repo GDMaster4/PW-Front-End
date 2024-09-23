@@ -16,7 +16,7 @@ export class HomepageComponent implements OnInit,OnDestroy
   protected updateQueryParams$ = new ReplaySubject<MovimentiFilters>();
 
   conto$= this.contoSrv.conto$;
-  movimenti$= this.movSrv.movimenti$;
+  movimenti$= new Observable<Movimento[]>;
   protected destroyed$ = new Subject<void>();
 
   constructor(protected contoSrv:ContoService, protected movSrv:MovimentiService, protected router: Router,
@@ -29,6 +29,10 @@ export class HomepageComponent implements OnInit,OnDestroy
         takeUntil(this.destroyed$),
         debounceTime(150)
       )
+      .subscribe ( conto=>{
+        this.movSrv.fetch(conto!.id!);
+        this.movimenti$=this.movSrv.movimenti$;
+      })
     this.updateQueryParams$
         .pipe(
           takeUntil(this.destroyed$),

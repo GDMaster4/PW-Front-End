@@ -8,6 +8,6 @@ export interface Movimento
   data: string,
   importo: number,
   saldo: number,
-  categoria: Categoria,
+  categoriaMovimentoID: Categoria,
   descrizioneEstesa: string
 }

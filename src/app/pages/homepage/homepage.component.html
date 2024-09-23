@@ -20,7 +20,7 @@
               <td>{{ movimento.data | date:'dd/MM/yyyy' }}</td>
               <td>{{ movimento.importo | currency:'EUR' }}</td>
               <td>{{ movimento.saldo | currency:'EUR' }}</td>
-              <td>{{ movimento.categoria.nomeCategoria }}</td>
+              <td>{{ movimento.categoriaMovimentoID.nomeCategoria }}</td>
               <td>{{ movimento.descrizioneEstesa }}</td>
             </tr>
           </tbody>

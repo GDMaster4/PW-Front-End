@@ -11,14 +11,11 @@ import { User } from '../entities/user.entity';
 export class AuthService
 {
   private _currentUser$ = new BehaviorSubject<User | null>(null);
-
   currentUser$ = this._currentUser$.asObservable();
 
-  constructor(
-    protected http: HttpClient,
-    protected jwt: JwtService,
-    protected router: Router
-  ) {}
+  constructor( protected http: HttpClient,  protected jwt: JwtService, protected router: Router ) {
+    this.fetchUser();
+  }
 
   /**
    * Method used to check if user has valid token and is not expired
@@ -39,7 +36,6 @@ export class AuthService
     return this.http.post<{user: User, token: string}>("/api/login", {email, password})
       .pipe(
         tap(res => this.jwt.setToken(res.token)),
-        tap(res => this._currentUser$.next(res.user)),
         map(res => res.user)
       );
   }
@@ -75,7 +71,7 @@ export class AuthService
 
   fetchUser()
   {
-    this.http.get<User>("api/users/me")
+    this.http.get<User>("api/user/me")
       .subscribe(user=>this._currentUser$.next(user));
   }
 }
