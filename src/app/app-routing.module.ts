@@ -6,6 +6,7 @@ import { HomepageComponent } from './pages/homepage/homepage.component';
 import { RicaricaComponent } from './pages/ricarica/ricarica.component';
 import { BonificoComponent } from './pages/bonifico/bonifico.component';
 import { ConfirmEmailComponent } from './pages/confirm-email/confirm-email.component';
+import { authGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -23,15 +24,18 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component:HomepageComponent
+    component:HomepageComponent,    
+    canActivate: [authGuard],
   },
   {
     path: 'ricarica',
-    component:RicaricaComponent
+    component:RicaricaComponent,    
+    canActivate: [authGuard]
   },
   {
     path: 'bonifico',
-    component:BonificoComponent
+    component:BonificoComponent,    
+    canActivate: [authGuard]
   },
   {
     path: 'confirm',
