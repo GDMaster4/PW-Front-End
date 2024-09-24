@@ -1,1 +1,57 @@
-<p>ricarica works!</p>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col col-lg-4"></div>
+        <div class="col col-lg-4 col-md-12 border rounded p-4">
+            <form [formGroup]="ricaricaForm">
+                <div class="mb-3">
+                    <label for="operatore">Scegli operatore</label>
+                    <div class="input-group">
+                        <select name="operatore" id="operatore" formControlName="operatore" class="w-100">
+                            <ng-container *ngFor="let operatore of operatori">
+                                <option value="{{operatore}}">{{operatore}}</option>
+                            </ng-container>
+                        </select>
+                    </div>
+                    <br>
+                    <label for="NumCell">Num. da ricaricare</label>
+                    <div class="input-group">
+                        <input
+                            id="NumCell"
+                            class="form-control"
+                            name="NumCell"
+                            type="text"
+                            formControlName="NumCell"
+                        />
+                    </div>
+                    <label for="Conferma">Conferma num. da ricaricare</label>
+                    <div class="input-group">
+                        <input
+                            id="Conferma"
+                            class="form-control"
+                            name="Conferma"
+                            type="text"
+                            formControlName="Conferma"
+                            (input)="controlloTesto()"
+                        />
+                    </div>
+                    <div class="text-danger" *ngIf="errCell">
+                      {{ errCell }}
+                    </div>
+                    <br>
+                    <label for="importo">Scegli importo</label>
+                    <div class="input-group">
+                        <select name="importo" id="importo" formControlName="importo" class="w-100">
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                            <option value="25">25</option>
+                        </select>
+                    </div>
+                </div>
+                <br>
+                <button type="button" class="btn btn-outline-primary w-100" (click)="ricarica()">Esegui Ricarica</button>
+            </form>
+        </div>
+    </div>
+</div>
