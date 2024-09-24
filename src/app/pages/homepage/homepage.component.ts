@@ -6,6 +6,8 @@ import { ReplaySubject, Subject, takeUntil, map, debounceTime, Observable } from
 import { Router, ActivatedRoute } from '@angular/router';
 import { Movimento } from '../../entities/movimento.entity';
 import { AuthService } from '../../services/auth.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { MovimentoDetailComponent } from '../../components/movimento-detail/movimento-detail.component';
 
 @Component({
   selector: 'app-homepage',
@@ -22,7 +24,7 @@ export class HomepageComponent implements OnInit,OnDestroy
   protected destroyed$ = new Subject<void>();
 
   constructor(protected contoSrv:ContoService, protected movSrv:MovimentiService, protected router: Router,
-    protected activatedRoute: ActivatedRoute, protected authSrv:AuthService) {}
+    protected activatedRoute: ActivatedRoute, protected authSrv:AuthService,private modalService: NgbModal) {}
 
   ngOnInit(): void
   {
@@ -56,5 +58,10 @@ export class HomepageComponent implements OnInit,OnDestroy
 
   applyFilters(value: MovimentiFilters) {
     this.updateQueryParams$.next(value);
+  }
+
+  openModal(movimento: Movimento) {
+    const modalRef = this.modalService.open(MovimentoDetailComponent);
+    modalRef.componentInstance.movimento = movimento; // Passiamo il movimento al modale
   }
 }

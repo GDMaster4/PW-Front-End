@@ -10,7 +10,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { MovimentiDetailComponent } from './components/movimento-detail/movimento-detail.component';
+import { MovimentoDetailComponent } from './components/movimento-detail/movimento-detail.component';
 import { MovimentiComponent } from './components/movimenti/movimenti.component';
 import { RicaricaComponent } from './pages/ricarica/ricarica.component';
 import { BonificoComponent } from './pages/bonifico/bonifico.component';
@@ -26,7 +26,7 @@ import { ConfirmEmailComponent } from './pages/confirm-email/confirm-email.compo
     HomepageComponent,
     RegisterComponent,
     LoginComponent,
-    MovimentiDetailComponent,
+    MovimentoDetailComponent,
     MovimentiComponent,
     RicaricaComponent,
     BonificoComponent,

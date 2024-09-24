@@ -8,17 +8,17 @@ import { FormBuilder } from '@angular/forms';
   templateUrl: './movimento-detail.component.html',
   styleUrls: ['./movimento-detail.component.css']
 })
-export class MovimentiDetailComponent
+export class MovimentoDetailComponent
 {
   @Input()
   movimento:Movimento | null=null;
 
 	closeResult = '';
-  constructor(protected modalService: NgbModal, protected fb: FormBuilder){}
+  constructor(protected modal: NgbModal, protected fb: FormBuilder){}
 
   open(content: TemplateRef<any>)
   {
-    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' })
+    this.modal.open(content, { ariaLabelledBy: 'modal-basic-title' })
     .result.then(
       (result) => {
         this.closeResult = `Closed with: ${result}`;

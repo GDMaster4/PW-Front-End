@@ -1,33 +1,54 @@
-<ng-template #content let-modal>
-	<div class="modal-header">
-		<h4 class="modal-title" id="modal-basic-title">Moviment Detail</h4>
-		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-	</div>
-	<div class="modal-body">
-    <div class="row">
-      <label for="conto">Conto Corrente :</label>
-      <label class="conto">{{movimento!.contoCorrente.iban}}</label>
-      <label for="data">Data esecuzione movimento:</label>
-      <label class="data">{{movimento!.data}}</label>
+
+<div class="modal-header bg-primary text-white">
+  <h4 class="modal-title text-center w-100 fw-bold">Dettagli del Movimento</h4>
+</div>
+
+<div class="modal-body p-4">
+  
+
+  <div class="row mb-3">
+    <div class="col-4 fw-bold">Data Esecuzione:</div>
+    <div class="col-8 fw-normal ">{{ movimento?.data | date: 'dd/MM/yyyy' }}</div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-4 fw-bold">Importo:</div>
+    <div class="col-8 fw-normal ">
+      <!-- Visualizza il segno + per le entrate, e - per le uscite -->
+      <span [ngClass]="{
+            'text-success': movimento?.categoriaMovimento!.tipologia === 'entrata',
+            'text-danger': movimento?.categoriaMovimento!.tipologia === 'uscita'
+          }">
+        {{ movimento?.categoriaMovimento!.tipologia === 'entrata' ? '+' : '-' }}
+        {{ movimento?.importo | currency: 'EUR' }}
+      </span>
     </div>
-    <div class="row">
-      <label for="importo">Importo :</label>
-      <label class="importo">{{movimento!.importo}}</label>
-      <label for="saldo">Saldo :</label>
-      <label class="saldo">{{movimento!.saldo}}</label>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-4 fw-bold">Saldo Post Movimento:</div>
+    <div class="col-8 fw-normal">
+      {{ movimento?.saldo | currency: 'EUR' }}
     </div>
-    <div class="row">
-      <label for="categoria">Categoria del movimento :</label>
-      <label class="categoria">{{movimento!.categoriaMovimento.tipologia}}</label>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-4 fw-bold">Categoria:</div>
+    <div class="col-8 fw-normal ">
+      {{ movimento?.categoriaMovimento!.tipologia | titlecase }}
     </div>
-    <div class="row">
-      <label for="descrizione">Descrizione del movimento :</label>
-      <textarea class="descrizione" disabled="true">
-        {{movimento!.descrizioneEstesa}}
-      </textarea>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-4 fw-bold">Descrizione:</div>
+    <div class="col-8 fw-normal ">
+      {{ movimento?.descrizioneEstesa }}
     </div>
-	</div>
-</ng-template>
-<button (click)="open(content)">
-  Dettaglio Movimento
-</button>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary fw-semibold" (click)="modal.dismissAll('Cancel click')">
+    <i class="bi bi-x-circle"></i> Chiudi
+  </button>
+</div>
