@@ -3,6 +3,7 @@ import { Movimento } from '../entities/movimento.entity';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { isNil, omitBy } from 'lodash';
+import { ContoService } from './conto.service';
 
 export interface MovimentiFilters
 {
@@ -21,7 +22,7 @@ export class MovimentiService
   movimenti$ = this._movimenti$.asObservable();
   protected conto:string="";
 
-  constructor(protected http:HttpClient) { }
+  constructor(protected http:HttpClient, protected contoSrv:ContoService) { }
 
   fetch(contoId:string)
   {
@@ -70,6 +71,7 @@ export class MovimentiService
         }
         this._movimenti$.next(tmp);
         this.fetch(this.conto);
+        this.contoSrv.single();
       },error => {
         console.error(error);
       });
