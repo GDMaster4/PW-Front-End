@@ -11,8 +11,8 @@ import { Validators, FormBuilder } from '@angular/forms';
 export class RicaricaComponent
 {
   ricaricaForm = this.fb.group({
-    NumCell: ['', Validators.required, Validators.maxLength(10)],
-    Conferma: ['', Validators.required, Validators.maxLength(10)],
+    NumCell: ['', Validators.required],
+    Conferma: ['', Validators.required],
     importo:[0,Validators.required],
     operatore: ['', Validators.required]
   });
@@ -35,10 +35,11 @@ export class RicaricaComponent
 
   ricarica()
   {
+    console.log(this.ricaricaForm.valid)
     if(this.ricaricaForm.valid)
     {
-      const {importo,NumCell}= this.ricaricaForm.value;
-      this.movSrv.add(importo!,`ricarica del numero ${NumCell}`,"Ricarica");
+      const {importo,NumCell}= this.ricaricaForm.value!;
+      this.movSrv.add(importo!,"Ricarica",`ricarica del numero ${NumCell}`);
       this.ricaricaForm.reset();
       this.router.navigate(['/home']);
     }
