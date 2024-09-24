@@ -58,9 +58,7 @@ export class AuthService
   {
     this.http.post<User>("/api/register", userData)
       .subscribe(user=>{
-            this._currentUser$.next(user);
-            //this.router.navigate(['/login'])
-            // Perform additional actions like redirecting the user or storing the token
+            this.router.navigate(['/login'])
           },
           error=> {
             // Handling errori

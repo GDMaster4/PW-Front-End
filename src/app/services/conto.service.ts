@@ -35,6 +35,18 @@ export class ContoService
 
   add()
   {
-    
+    let userId:string="";
+    this.authSrv.currentUser$.subscribe(user=>{
+      userId=user!.id!;
+    })
+
+
+    this.http.post<Conto>("/api/conto/add",{user:userId})
+      .subscribe(addConto => {
+        this._conto$.next(addConto);
+        this.single();
+      },error => {
+        console.error(error);
+      });
   }
 }

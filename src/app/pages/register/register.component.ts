@@ -55,5 +55,6 @@ export class RegisterComponent implements OnInit, OnDestroy
     };
 
     await this.authSrv.register(user);
+    this.registerForm.reset();
   }
 }
