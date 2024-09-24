@@ -35,13 +35,7 @@ export class ContoService
 
   add()
   {
-    let userId:string="";
-    this.authSrv.currentUser$.subscribe(user=>{
-      userId=user!.id!;
-    })
-
-
-    this.http.post<Conto>("/api/conto/add",{user:userId})
+    this.http.post<Conto>("/api/conto/add",{})
       .subscribe(addConto => {
         this._conto$.next(addConto);
         this.single();
