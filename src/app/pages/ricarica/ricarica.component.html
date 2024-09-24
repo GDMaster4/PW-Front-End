@@ -21,6 +21,7 @@
                             name="NumCell"
                             type="text"
                             formControlName="NumCell"
+                            [maxlength]="10"
                         />
                     </div>
                     <label for="Conferma">Conferma num. da ricaricare</label>
@@ -32,6 +33,7 @@
                             type="text"
                             formControlName="Conferma"
                             (input)="controlloTesto()"
+                            [maxlength]="10"
                         />
                     </div>
                     <div class="text-danger" *ngIf="errCell">
@@ -50,7 +52,7 @@
                     </div>
                 </div>
                 <br>
-                <button type="button" class="btn btn-outline-primary w-100" (click)="ricarica()">Esegui Ricarica</button>
+                <input type="submit" class="btn btn-outline-primary w-100" (click)="ricarica()" value="Esegui Ricarica">
             </form>
         </div>
     </div>
