@@ -35,6 +35,12 @@ export class ContoService
 
   add()
   {
-    
+    this.http.post<Conto>("/api/conto/add",{})
+      .subscribe(addConto => {
+        this._conto$.next(addConto);
+        this.single();
+      },error => {
+        console.error(error);
+      });
   }
 }
