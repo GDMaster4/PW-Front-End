@@ -1,38 +1,55 @@
 <div>
-    <div class="d-flex justify-content-between p-4">
-        <h1>BENVENUTO {{(currentUser$ | async)!.fullName}} !</h1>
-        <h3>SALDO ATTUALE</h3>
+  <div class="container mt-5">
+    <div class="row align-items-center justify-content-between p-4 bg-light shadow-sm rounded">
+      <div class="col">
+        <h2 class="display-4 fw-bold">BENVENUTO <br>{{(currentUser$ | async)!.fullName}}!</h2>
+      </div>
+      <div class="col text-end">
+        <h3 class="saldo-text">SALDO ATTUALE: <span>{{(conto$ | async)!.saldo | currency:'EUR'}}</span></h3>
+      </div>
     </div>
-    <div class="container mt-5" *ifAuthenticated>
-      <div class="row">
-        <div class="card mt-2">
-            <div class="card-body">
-              <h5 class="card-title">{{ (conto$ | async)!.iban}}</h5>
-              <h6 class="card-subtitle mb-2 text-muted" >Creato: {{ (conto$ | async)!.dataApertura}}</h6>
+  </div>
+  
+  <div class="container mt-5" *ifAuthenticated>
+      <div class="row justify-content-center"> <!-- Added justify-content-center for centering -->
+          <div class="card mt-2">
+              <div class="card-body">
+                  <h5 class="card-title">IBAN: {{ (conto$ | async)!.iban }}</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">Creato: {{ (conto$ | async)!.dataApertura | date:'dd/MM/yyyy' }}</h6>
+              </div>
           </div>
-        </div>
       </div>
-      <div class="row">
-        <table class="table table-striped table-hover">
-          <thead class="thead-dark">
-            <tr>
-              <th>Data</th>
-              <th>Importo</th>
-              <th>Saldo</th>
-              <th>Categoria</th>
-              <th>Descrizione</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let movimento of movimenti$ |async">
-              <td>{{ movimento.data | date:'dd/MM/yyyy' }}</td>
-              <td>{{ movimento.importo | currency:'EUR' }}</td>
-              <td>{{ movimento.saldo | currency:'EUR' }}</td>
-              <td>{{ movimento.categoriaMovimento.nomeCategoria }}</td>
-              <td>{{ movimento.descrizioneEstesa }}</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="row mt-4 justify-content-center"> <!-- Added justify-content-center for centering -->
+          <ng-container *ngIf="(movimenti$ | async)!.length > 0; else noMovimenti">
+              <div class="col-12 col-md-8 mb-4" *ngFor="let movimento of movimenti$ | async"> <!-- Changed col-12 to col-md-8 for wider cards -->
+                  <div class="card custom-card">
+                      <div class="card-body">
+                          <div class="d-flex justify-content-between align-items-start">
+                              <div>
+                                  <h5 class="card-title">{{ movimento.descrizioneEstesa }}</h5>
+                                  <h6 class="card-subtitle mb-2 text-muted">
+                                      Data: {{ movimento.data | date:'dd/MM/yyyy' }}
+                                  </h6>
+                              </div>
+                              <span [ngClass]="{'entrata': movimento.categoriaMovimento.tipologia === 'entrata', 'uscita': movimento.categoriaMovimento.tipologia === 'uscita'}" class="amount">
+                                  {{ movimento.categoriaMovimento.tipologia === 'entrata' ? '+' : '-' }} {{ movimento.importo | currency:'EUR' }}
+                              </span>
+                          </div>
+                          <p class="card-text">
+                              
+                              Categoria: {{ movimento.categoriaMovimento.nomeCategoria }}
+                          </p>
+                      </div>
+                  </div>
+              </div>
+          </ng-container>
+          <ng-template #noMovimenti>
+              <div class="col-12">
+                  <div class="alert alert-warning" role="alert">
+                      Non ci sono movimenti da mostrare.
+                  </div>
+              </div>
+          </ng-template>
       </div>
-    </div>
+  </div>
 </div>

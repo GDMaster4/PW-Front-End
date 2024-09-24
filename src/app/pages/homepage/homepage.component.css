@@ -1,7 +1,81 @@
-.title{
-    text-align:left;
-    margin-left: 10px;
-    font-size: 3.5em;
-    font-family:serif;
+.container {
+    max-width: 1200px; /* Control container width for larger screens */
 }
 
+.bg-light {
+    background-color: #f8f9fa !important; /* Subtle light background */
+}
+
+.shadow-sm {
+    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075); /* Subtle shadow effect */
+}
+
+.display-4 {
+    font-size: 2.5rem; /* Increase font size for the main title */
+    color: #343a40; /* Darker font for better contrast */
+}
+
+.fw-bold {
+    font-weight: 700; /* Apply bold font to the welcome text */
+}
+
+.saldo-text {
+    font-size: 1.5rem; /* Slightly increase the font size for balance */
+    font-weight: 500; /* Semi-bold for a balance between emphasis and subtlety */
+    color: #28a745; /* Green color for a positive and encouraging look */
+}
+
+h3 span {
+    font-weight: 700; /* Bold weight for the actual balance amount */
+    color: #28a745; /* Match the color of the balance amount with saldo-text */
+}
+
+.entrata {
+    color: green; /* Color for income amounts */
+}
+
+.uscita {
+    color: red; /* Color for expense amounts */
+}
+/* styles.css or component stylesheet */
+
+.custom-card {
+    width: 600px; /* Set card width */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.2s; /* Smooth hover effect */
+    padding: 20px; /* Inner padding for better spacing */
+    display: flex; /* Enable flexbox */
+    flex-direction: column; /* Arrange children in a column */
+    justify-content: space-between; /* Space out items */
+}
+
+.custom-card:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+.card-title {
+    font-size: 1.5rem; /* Font size for title */
+    overflow: hidden; /* Prevent overflow */
+    white-space: nowrap; /* Prevent text wrapping */
+    text-overflow: ellipsis; /* Show ellipsis for overflow */
+}
+
+.card-subtitle {
+    font-size: 1.1rem; /* Subtitle font size */
+}
+
+.amount {
+    font-size: 1.75rem; /* Font size for amount */
+    font-weight: bold; /* Bold for emphasis */
+    text-align: right; /* Align amount to the right */
+    min-width: 100px; /* Minimum width for consistent spacing */
+}
+
+.card-text {
+    font-size: 1rem; /* Font size for card text */
+    overflow: hidden; /* Prevent overflow */
+    text-overflow: ellipsis; /* Show ellipsis for overflow */
+    white-space: normal; /* Allow text to wrap */
+    flex-grow: 1; /* Allow the text area to grow and fill space */
+}
