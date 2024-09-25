@@ -120,4 +120,9 @@ export class HomepageComponent implements OnInit,OnDestroy
       return Object.values(row).toString();
     }).join('\n');
   }
+
+  navigateToMovimenti() {
+    this.router.navigate(['/movimenti']); // Modifica il percorso in base alla tua configurazione delle rotte
+  }
+  
 }

@@ -1,86 +1,144 @@
+/* Container generale */
 .container {
-    max-width: 1200px; /* Control container width for larger screens */
+    background-color: #ffffff; /* Sfondo bianco per il form */
+    border-radius: 1rem; /* Bordi arrotondati */
+    padding: 1.5rem; /* Padding interno */
 }
 
-.bg-light {
-    background-color: #f8f9fa !important; /* Subtle light background */
+/* Header personalizzato per il titolo */
+.header-custom {
+    background-color: #7c4a9b; /* Sfondo viola scuro */
+    color: #ffffff; /* Testo bianco */
+    text-align: center; /* Testo centrato */
+    padding: 1rem; /* Spazio interno per il titolo */
+    border-radius: 1rem; /* Bordo arrotondato */
 }
 
-.shadow-sm {
-    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075); /* Subtle shadow effect */
-}
-
+/* Titoli principali */
 .display-4 {
-    font-size: 2.5rem; /* Increase font size for the main title */
-    color: #343a40; /* Darker font for better contrast */
+    font-size: 2rem; /* Dimensione del titolo */
+    font-weight: bold; /* Grassetto */
 }
 
-.fw-bold {
-    font-weight: 700; /* Apply bold font to the welcome text */
-}
-
+/* Testo saldo attuale */
 .saldo-text {
-    font-size: 1.5rem; /* Slightly increase the font size for balance */
-    font-weight: 500; /* Semi-bold for a balance between emphasis and subtlety */
-    color: #28a745; /* Green color for a positive and encouraging look */
+    font-size: 1.5rem; /* Dimensione del testo */
+    font-weight: normal; /* Normale */
 }
 
-h3 span {
-    font-weight: 700; /* Bold weight for the actual balance amount */
-    color: #28a745; /* Match the color of the balance amount with saldo-text */
+/* Stile della card dei movimenti */
+.custom-card {
+    background-color: #ffffff; /* Colore bianco per la card */
+    color: #7c4a9b; /* Viola scuro per il testo */
+    border: 2px solid #7c4a9b; /* Bordo viola scuro */
+    border-radius: 1rem; /* Bordi arrotondati */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Ombra leggera */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transizione per il ridimensionamento e l'ombra */
+}
+
+/* Effetto di hover per allargare la card */
+.custom-card:hover {
+    transform: scale(1.05); /* Aumenta leggermente le dimensioni della card */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Ombra più pronunciata */
+    cursor: pointer;
+}
+
+
+
+/* Titoli delle card */
+.card-title {
+    color: #7c4a9b; /* Colore viola scuro */
+}
+
+/* Colore del testo di errore */
+.text-danger {
+    font-size: 0.875rem;
+    color: #dc3545 !important;
+}
+
+/* Pulsante fissi per esportazione */
+.fixed-Button {
+    border: none; /* Nessun bordo */
+    border-radius: 0.5rem; /* Bordi arrotondati */
+    padding: 0.5rem; /* Padding interno */
+    margin: 0 0.5rem; /* Margini orizzontali */
+    cursor: pointer; /* Cursor a mano */
+    transition: all 0.3s ease; /* Transizione per hover */
+}
+
+/* Pulsante Excel - Verde */
+.fixed-Button.excel {
+    background-color: #28a745; /* Colore verde */
+    color: white; /* Testo bianco */
+}
+
+.fixed-Button.excel:hover {
+    background-color: #218838; /* Verde più scuro al passaggio del mouse */
+}
+
+/* Pulsante CSV - Blu */
+.fixed-Button.csv {
+    background-color: #007bff; /* Colore blu */
+    color: white; /* Testo bianco */
+}
+
+.fixed-Button.csv:hover {
+    background-color: #0056b3; /* Blu più scuro al passaggio del mouse */
+}
+
+/* Stile dell'immagine dentro il pulsante */
+.fixed-Button img {
+    width: 24px; /* Larghezza dell'immagine */
+    height: 24px; /* Altezza dell'immagine */
+}
+
+
+/* Colore del testo per entrate e uscite */
+.amount {
+    font-size: 1.25rem; /* Dimensione del testo */
+    font-weight: bold; /* Grassetto */
 }
 
 .entrata {
-    color: green; /* Color for income amounts */
+    color: green; /* Colore verde per le entrate */
 }
 
 .uscita {
-    color: red; /* Color for expense amounts */
-}
-/* styles.css or component stylesheet */
-
-.custom-card {
-    width: 600px; /* Set card width */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    transition: transform 0.2s; /* Smooth hover effect */
-    padding: 20px; /* Inner padding for better spacing */
-    display: flex; /* Enable flexbox */
-    flex-direction: column; /* Arrange children in a column */
-    justify-content: space-between; /* Space out items */
+    color: red; /* Colore rosso per le uscite */
 }
 
-.custom-card:hover {
-    transform: scale(1.05); /* Slight zoom effect on hover */
+/* Messaggio di avviso per movimenti assenti */
+.alert {
+    margin-top: 1rem; /* Spazio sopra l'allerta */
+    border-radius: 0.5rem; /* Bordi arrotondati */
 }
 
-.card-title {
-    font-size: 1.5rem; /* Font size for title */
-    overflow: hidden; /* Prevent overflow */
-    white-space: nowrap; /* Prevent text wrapping */
-    text-overflow: ellipsis; /* Show ellipsis for overflow */
+/* Stile per il div del titolo "Ultimi 5 Movimenti" */
+.container .d-flex {
+    margin-bottom: 10px; /* Spazio ridotto sotto il titolo */
+    align-items: center; /* Allinea verticalmente al centro */
 }
 
-.card-subtitle {
-    font-size: 1.1rem; /* Subtitle font size */
+.container .d-flex h4 {
+    flex: 1; /* Permette al titolo di espandersi */
+    text-align: left; /* Allinea il testo a sinistra */
 }
 
-.amount {
-    font-size: 1.75rem; /* Font size for amount */
-    font-weight: bold; /* Bold for emphasis */
-    text-align: right; /* Align amount to the right */
-    min-width: 100px; /* Minimum width for consistent spacing */
+h4.purple-text {
+    font-weight: bold; /* Rendi il titolo in grassetto */
+    color: #7c4a9b; /* Colore viola scuro */
+    margin: 0; /* Rimuovi margini per ridurre spazio */
 }
 
-.card-text {
-    font-size: 1rem; /* Font size for card text */
-    overflow: hidden; /* Prevent overflow */
-    text-overflow: ellipsis; /* Show ellipsis for overflow */
-    white-space: normal; /* Allow text to wrap */
-    flex-grow: 1; /* Allow the text area to grow and fill space */
+.btn-outline-primary {
+    background-color: transparent; /* Sfondo trasparente */
+    border: 2px solid #7c4a9b; /* Bordo viola scuro */
+    color: #7c4a9b; /* Testo viola scuro */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Effetto di transizione */
 }
 
-.card-subtitle {
-    margin-bottom: 0; /* Adjust spacing if necessary */
+.btn-outline-primary:hover {
+    background-color: #7c4a9b; /* Colore viola scuro al passaggio del mouse */
+    color: white; /* Testo bianco al passaggio del mouse */
 }
 

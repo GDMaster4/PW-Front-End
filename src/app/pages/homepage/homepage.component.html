@@ -1,28 +1,29 @@
 <div>
   <div class="container mt-5">
-    <div class="row align-items-center justify-content-between p-4 bg-light shadow-sm rounded">
+    <div class="row align-items-center justify-content-between p-4 header-custom shadow-sm rounded">
       <div class="col">
-        <h2 class="display-4 fw-bold">BENVENUTO <br>{{ (currentUser$ |async)!.fullName }}!</h2>
+        <h2 class="display-4 fw-bold">BENVENUTO <br>{{ (currentUser$ | async)!.fullName }}!</h2>
       </div>
       <div class="col text-end">
-        <h3 class="saldo-text">SALDO ATTUALE: <span>{{ (conto$ | async)!.saldo | currency:'EUR' }}</span></h3>
+        <h3 class="saldo-text purple-text">SALDO ATTUALE: <span>{{ (conto$ | async)!.saldo | currency:'EUR' }}</span></h3>
       </div>
     </div>
   </div>
 
-  <div class="container mt-5" *ifAuthenticated>
-    <div class="row justify-content-center">
-      <div class="card mt-2">
-        <div class="card-body">
-          <h5 class="card-title">IBAN: {{ (conto$ | async)!.iban }}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">
-            Creato: {{ (conto$ | async)!.dataApertura | date:'dd/MM/yyyy' }}
-          </h6>
+
+
+  <div class="container mt-3" *ifAuthenticated>
+    <div class="row mt-2 justify-content-center"> 
+      <div class="col-12 col-md-8 mb-4">
+        <div class="d-flex justify-content-between align-items-center">
+          <h4 class="purple-text mb-0">Ultimi 5 Movimenti</h4>
+          <button class="btn btn-outline-primary" (click)="navigateToMovimenti()">
+            Vai ai Movimenti
+          </button>
         </div>
       </div>
-    </div>
+      
 
-    <div class="row mt-4 justify-content-center">
       <ng-container *ngIf="(movimenti$ | async)!.length > 0; else noMovimenti">
         <div class="col-12 col-md-8 mb-4" *ngFor="let movimento of movimenti$ | async">
           <div class="card custom-card" (click)="openModal(movimento)">
@@ -51,12 +52,14 @@
             </div>
           </div>
         </div>
-        <button class="fixed-Button excel" (click)="exportToExcel()" data-bs-toggle="tooltip" data-bs-placement="top" title="Export in Excel">
+        <div class="d-flex justify-content-center mt-3">
+          <button class="fixed-Button excel" (click)="exportToExcel()" data-bs-toggle="tooltip" data-bs-placement="top" title="Export in Excel">
             <img src="https://cdn-icons-png.flaticon.com/512/732/732066.png" alt="excel">
-        </button>
-        <button class="fixed-Button csv" (click)="exportToCSV()" data-bs-toggle="tooltip" data-bs-placement="top" title="Export in CSV">
-             <img src="../../../assets/img/export.svg" alt="csv">
-        </button>
+          </button>
+          <button class="fixed-Button csv" (click)="exportToCSV()" data-bs-toggle="tooltip" data-bs-placement="top" title="Export in CSV">
+            <img src="../../../assets/img/export.svg" alt="csv">
+          </button>
+        </div>
       </ng-container>
       
       <ng-template #noMovimenti>
