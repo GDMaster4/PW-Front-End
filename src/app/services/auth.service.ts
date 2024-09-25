@@ -73,7 +73,11 @@ export class AuthService
 
   fetchUsers()
   {
-    return this.http.get<User[]>("api/user");
+    const utenti=this.http.get<User[]>("api/user")
+      .pipe(
+        map(users => users.filter(user => user.id !== this._currentUser$.value?.id))
+      );
+    return utenti;    
   }
 
   modPassw(nuovaPassw:string)
