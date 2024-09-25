@@ -1,7 +1,7 @@
 .card-custom {
     background-color: #ffffff; /* Bianco per la card */
-    color: #6a1b9a; /* Viola scuro per il testo nella card */
-    border: 2px solid #6a1b9a; /* Bordo viola scuro */
+    color: #7c4a9b; /* Viola scuro per il testo nella card */
+    border: 2px solid #7c4a9b; /* Bordo viola scuro */
     border-radius: 1rem; /* Bordi arrotondati */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Ombra leggera */
     padding: 2rem;
@@ -12,7 +12,7 @@
 }
 
 .btn-dark-purple {
-    background-color: #6a1b9a; /* Viola scuro per il bottone */
+    background-color: #7c4a9b; /* Viola scuro per il bottone */
     color: #ffffff; /* Testo bianco */
     border: none;
     padding: 0.75rem 1.5rem;
@@ -24,8 +24,40 @@
     background-color: #4e1f6b; /* Viola ancora più scuro al passaggio del mouse */
 }
 
+/* Font personalizzato */
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Header personalizzato */
+.header-custom {
+    background-color: #7c4a9b; /* Viola */
+    border-radius: 8px;
+}
+
 .purple-text {
-    color: #7b1fa2 !important; /* Colore viola chiaro per i testi */
+    color: #7c4a9b !important;
+    font-size: 18px;
+}
+
+.text-dark {
+    color: #000;
+}
+
+.form-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-group p {
+    margin-bottom: 0;
+}
+
+
+
+/* Rende il titolo del card più evidente */
+.card-title {
+    font-size: 20px;
 }
 
 

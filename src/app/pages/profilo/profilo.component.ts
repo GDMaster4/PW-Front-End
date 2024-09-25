@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { ContoService } from '../../services/conto.service';
 
 @Component({
   selector: 'app-profilo',
@@ -9,7 +10,8 @@ import { AuthService } from '../../services/auth.service';
 export class ProfiloComponent
 {
   currentUser$= this.authSrv.currentUser$;
+  currentConto$=this.contSrv.conto$;
 
-  constructor(protected authSrv:AuthService){}
+  constructor(protected authSrv:AuthService,protected contSrv:ContoService){}
 
 }

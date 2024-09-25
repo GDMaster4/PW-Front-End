@@ -1,23 +1,34 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-lg-4 col-md-6">
+        <div class="col-lg-6 col-md-8">
+            <!-- Header con sfondo viola e testo bianco -->
+           
+
             <div class="card card-custom p-4">
+                <div class="header-custom p-3 mb-4">
+                    <h2 class="text-center text-white">Dettagli Profilo</h2>
+                </div>
                 <div class="card-body">
-                    <h5 class="card-title text-center purple-text">Dettagli Titolare</h5>
                     <div class="mb-3">
-                        <div class="form-group">
+                        <!-- Righe di dettagli -->
+                        <div class="form-group d-flex align-items-center justify-content-between">
                             <label for="nomeTit" class="font-weight-bold purple-text">Nome Titolare</label>
-                            <p class="nomeTit">{{(currentUser$ | async)!.nomeTitolare}}</p>
+                            <p class="nomeTit mb-0 text-dark">{{(currentUser$ | async)!.nomeTitolare}}</p>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group d-flex align-items-center justify-content-between">
                             <label for="cognTit" class="font-weight-bold purple-text">Cognome Titolare</label>
-                            <p class="cognTit">{{(currentUser$ | async)!.cognomeTitolare}}</p>
+                            <p class="cognTit mb-0 text-dark">{{(currentUser$ | async)!.cognomeTitolare}}</p>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group d-flex align-items-center justify-content-between">
                             <label for="email" class="font-weight-bold purple-text">Email</label>
-                            <p class="email">{{(currentUser$ | async)!.email}}</p>
+                            <p class="email mb-0 text-dark">{{(currentUser$ | async)!.email}}</p>
+                        </div>
+                        <div class="form-group d-flex align-items-center justify-content-between">
+                            <label for="email" class="font-weight-bold purple-text">Data Apertura</label>
+                            <p class="email mb-0 text-dark">{{(currentConto$ | async)!.dataApertura|date:'dd/MM/yyyy'}}</p>
                         </div>
                     </div>
+                    <!-- Componente per modificare la password -->
                     <app-mod-passw></app-mod-passw>
                 </div>
             </div>
