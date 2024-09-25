@@ -8,6 +8,7 @@ import { Movimento } from '../../entities/movimento.entity';
 import { AuthService } from '../../services/auth.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MovimentoDetailComponent } from '../../components/movimento-detail/movimento-detail.component';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-homepage',
@@ -56,8 +57,59 @@ export class HomepageComponent implements OnInit,OnDestroy
     this.updateQueryParams$.next(value);
   }
 
-  openModal(movimento: Movimento) {
+  openModal(movimento: Movimento)
+  {
     const modalRef = this.modalService.open(MovimentoDetailComponent);
     modalRef.componentInstance.movimento = movimento; // Passiamo il movimento al modale
+  }
+
+  exportToCSV()
+  {
+    let data:any[]=[];
+    this.movimenti$
+      .subscribe(movimenti=>{
+        data=movimenti.map(movimento => {
+          return {
+            contoCorrente:movimento.contoCorrente.iban,
+            data:movimento.data,
+            importo:movimento.importo,
+            saldo:movimento.saldo,
+            categoria:movimento.categoriaMovimento.nomeCategoria,
+            descrizioneEstesa:movimento.descrizioneEstesa
+          }
+        });
+      })
+      console.log(data)
+    const csvData = this.convertToCSV(data);
+    const blob = new Blob([csvData], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'movimenti.csv';
+    a.click();
+    window.URL.revokeObjectURL(url);
+  }
+
+  exportToExcel()
+  {
+    let data:Movimento[]=[];
+    this.movimenti$
+      .pipe(
+        map(movimenti => data=movimenti)
+      );
+    const worksheet = XLSX.utils.json_to_sheet(data);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Movimenti');
+    XLSX.writeFile(workbook, 'movimenti.xlsx');
+  }
+
+  private convertToCSV(data: any[]): string
+  {
+    const keys = Object.keys(data[0]);
+    const valuesArray = data.map(item => Object.values(item));
+    const array = [keys, ...valuesArray];
+    return array.map(row => {
+      return Object.values(row).toString();
+    }).join('\n');
   }
 }

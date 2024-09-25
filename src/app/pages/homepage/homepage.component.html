@@ -1,59 +1,3 @@
-<!-- <div>
-  <div class="container mt-5">
-    <div class="row align-items-center justify-content-between p-4 bg-light shadow-sm rounded">
-      <div class="col">
-        <h2 class="display-4 fw-bold">BENVENUTO <br>{{(currentUser$ | async)!.fullName}}!</h2>
-      </div>
-      <div class="col text-end">
-        <h3 class="saldo-text">SALDO ATTUALE: <span>{{(conto$ | async)!.saldo | currency:'EUR'}}</span></h3>
-      </div>
-    </div>
-  </div>
-  
-  <div class="container mt-5" *ifAuthenticated>
-      <div class="row justify-content-center"> <!-- Added justify-content-center for centering -->
-          <!-- <div class="card mt-2">
-              <div class="card-body">
-                  <h5 class="card-title">IBAN: {{ (conto$ | async)!.iban }}</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">Creato: {{ (conto$ | async)!.dataApertura | date:'dd/MM/yyyy' }}</h6>
-              </div>
-          </div>
-      </div> -->
-      <!-- <div class="row mt-4 justify-content-center"> Added justify-content-center for centering -->
-          <!-- <ng-container *ngIf="(movimenti$ | async)!.length > 0; else noMovimenti">
-              <div class="col-12 col-md-8 mb-4" *ngFor="let movimento of movimenti$ | async"> <!-- Changed col-12 to col-md-8 for wider cards -->
-                  <!-- <div class="card custom-card" onclick="openModal()">
-                      <div class="card-body">
-                          <div class="d-flex justify-content-between align-items-start">
-                              <div>
-                                  <h5 class="card-title">{{ movimento.descrizioneEstesa }}</h5>
-                                  <h6 class="card-subtitle mb-2 text-muted">
-                                      Data: {{ movimento.data | date:'dd/MM/yyyy' }}
-                                  </h6>
-                              </div>
-                              <span [ngClass]="{'entrata': movimento.categoriaMovimento.tipologia === 'entrata', 'uscita': movimento.categoriaMovimento.tipologia === 'uscita'}" class="amount">
-                                  {{ movimento.categoriaMovimento.tipologia === 'entrata' ? '+' : '-' }} {{ movimento.importo | currency:'EUR' }}
-                              </span>
-                          </div>
-                          <p class="card-text">
-                              
-                              Categoria: {{ movimento.categoriaMovimento.nomeCategoria }}
-                          </p>
-                      </div>
-                  </div>
-              </div>
-          </ng-container>
-          <ng-template #noMovimenti>
-              <div class="col-12">
-                  <div class="alert alert-warning" role="alert">
-                      Non ci sono movimenti da mostrare.
-                  </div>
-              </div>
-          </ng-template>
-      </div>
-  </div>
-</div> --> 
-
 <div>
   <div class="container mt-5">
     <div class="row align-items-center justify-content-between p-4 bg-light shadow-sm rounded">
@@ -107,8 +51,14 @@
             </div>
           </div>
         </div>
+        <button class="fixed-Button" (click)="exportToExcel()" data-bs-toggle="tooltip" data-bs-placement="top" title="Task Personali" >
+            <img src="https://cdn-icons-png.flaticon.com/512/1077/1077063.png" alt="personale">
+        </button>
+        <button class="fixed-Button" (click)="exportToCSV()" data-bs-toggle="tooltip" data-bs-placement="top" title="Stampa PDF">
+            <img src="https://cdn-icons-png.flaticon.com/512/201/201153.png" alt="Pdf">
+        </button>
       </ng-container>
-
+      
       <ng-template #noMovimenti>
         <div class="col-12">
           <div class="alert alert-warning" role="alert">
