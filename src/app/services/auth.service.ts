@@ -71,6 +71,11 @@ export class AuthService
       .subscribe(user=>this._currentUser$.next(user));
   }
 
+  fetchUsers()
+  {
+    return this.http.get<User[]>("api/user");
+  }
+
   modPassw(nuovaPassw:string)
   {
     this.http.patch<User>("api/user",{nuovaPassw:nuovaPassw})
