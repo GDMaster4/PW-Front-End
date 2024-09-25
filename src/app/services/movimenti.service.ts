@@ -48,7 +48,7 @@ export class MovimentiService
   list(filters:MovimentiFilters)
   {
     let q=omitBy(filters,isNil);
-    let result;
+    const result=this.http.get<Movimento[]>(`/api/movimenti/${this.conto}`,{params: q});
     return result;
   }
 
