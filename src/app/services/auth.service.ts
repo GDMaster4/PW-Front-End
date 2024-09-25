@@ -71,6 +71,15 @@ export class AuthService
       .subscribe(user=>this._currentUser$.next(user));
   }
 
+  fetchUsers()
+  {
+    const utenti=this.http.get<User[]>("api/user")
+      .pipe(
+        map(users => users.filter(user => user.id !== this._currentUser$.value?.id))
+      );
+    return utenti;    
+  }
+
   modPassw(nuovaPassw:string)
   {
     this.http.patch<User>("api/user",{nuovaPassw:nuovaPassw})

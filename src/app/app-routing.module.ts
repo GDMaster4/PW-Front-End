@@ -4,7 +4,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { RicaricaComponent } from './pages/ricarica/ricarica.component';
-import { BonificoComponent } from './pages/bonifico/bonifico.component';
+import { MovimentoComponent } from './pages/movimento/movimento.component';
 import { ConfirmEmailComponent } from './pages/confirm-email/confirm-email.component';
 import { authGuard } from './guards/auth.guard';
 import { ProfiloComponent } from './pages/profilo/profilo.component';
@@ -35,7 +35,7 @@ const routes: Routes = [
   },
   {
     path: 'bonifico',
-    component:BonificoComponent,    
+    component:MovimentoComponent,    
     canActivate: [authGuard]
   },
   {

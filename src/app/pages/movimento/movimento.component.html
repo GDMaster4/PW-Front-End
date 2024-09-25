@@ -1,0 +1,68 @@
+<div class="container mt-5 w-50">
+    <form [formGroup]="movForm">
+        <div class="mb-3">
+            <label for="importo">Importo del movimento:</label>        
+            <div class="input-group">
+                <input
+                    id="importo"
+                    class="form-control"
+                    name="importo"
+                    type="number"
+                    formControlName="importo"
+                />
+            </div>
+            <label for="casuale">Casuale del movimento:</label>        
+            <div class="input-group">
+                <input
+                    id="casuale"
+                    class="form-control"
+                    name="importo"
+                    type="text"
+                    formControlName="casuale"
+                />
+            </div>
+            <label for="categoria">Categoria del movimento: </label> 
+            <div class="input-group">
+                <select formControlName="categoria" name="categoria" id="categoria" class="w-100" (change)="selezione()">
+                    <option value="Bonifico">Bonifico</option>
+                    <option value="Prelievo Contanti">Prelievo Contanti</option>
+                    <option value="Versamento Bancomat">Versamento Bancomat</option>
+                </select>
+            </div>
+            <div *ngIf="bonifico">
+                <label for="iban">IBAN destinatario:</label>    
+                <div class="input-group">
+                    <input
+                        id="iban"
+                        class="form-control"
+                        name="iban"
+                        type="text"
+                        formControlName="iban"
+                        [maxlength]="27"
+                    />
+                </div>
+                <label for="nome">Nome destinatario :</label>    
+                <div class="input-group">
+                    <input
+                        id="nome"
+                        class="form-control"
+                        name="nome"
+                        type="text"
+                        formControlName="nome"
+                    />
+                </div>
+                <label for="cognome">Cognome destinatario :</label>    
+                <div class="input-group">
+                    <input
+                        id="cognome"
+                        class="form-control"
+                        name="cognome"
+                        type="text"
+                        formControlName="cognome"
+                    />
+                </div>
+            </div>
+        </div>
+        <input type="submit" class="btn btn-outline-primary w-100" (click)="Movimento()" value="Esegui Movimento">
+    </form>
+</div>

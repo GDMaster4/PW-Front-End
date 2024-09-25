@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Conto } from '../entities/conto.entity';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, map } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from './auth.service';
 
@@ -42,5 +42,22 @@ export class ContoService
       },error => {
         console.error(error);
       });
+  }
+
+  list()
+  {
+    const conti= this.http.get<Conto[]>("/api/conto/all")
+      .pipe(
+        map(conti => conti.filter(conto => conto.iban !== this._conto$.value?.iban))
+      );
+    
+    return conti;
+  }
+
+  idConto()
+  {
+    let id="";
+    this.conto$.subscribe(conto=>id=conto!.id);
+    return id;
   }
 }

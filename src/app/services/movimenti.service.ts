@@ -22,12 +22,24 @@ export class MovimentiService
   movimenti$ = this._movimenti$.asObservable();
   protected conto:string="";
 
-  constructor(protected http:HttpClient, protected contoSrv:ContoService) { }
-
-  fetch(contoId:string)
+  constructor(protected http:HttpClient, protected contoSrv:ContoService)
   {
-    this.conto=contoId;
-    this.http.get<Movimento[]>(`/api/movimenti/${contoId}?numero=5`)
+    this.contoSrv.conto$
+      .subscribe(conto => {
+        if (conto)
+        {
+          this.conto=this.contoSrv.idConto();
+          this.fetch();
+        }
+        else {
+          this._movimenti$.next([]);
+        }
+      })
+  }
+
+  fetch()
+  {
+    this.http.get<Movimento[]>(`/api/movimenti/${this.conto}?numero=5`)
       .subscribe(movimenti=>{
         this._movimenti$.next(movimenti);
       });
@@ -38,10 +50,11 @@ export class MovimentiService
     let q=omitBy(filters,isNil);
   }
 
-  add(importo:number,categoria:string,descEstesa:string, destinatarioId?:string)
+  add(importo:number,categoria:string,descEstesa:string, destinatarioIban?:string)
   {
+    console.log(categoria)
     let newMov;    
-    if(destinatarioId === undefined)
+    if(destinatarioIban === undefined)
     {
       newMov={
         importo:importo,
@@ -55,11 +68,11 @@ export class MovimentiService
         importo:importo,
         categoriaMovimento:categoria,
         descrizioneEstesa:descEstesa,
-        destinatarioId:destinatarioId
+        destinatarioIban:destinatarioIban
       }
     }
 
-    this.http.post<Movimento>("/api/movimenti/", newMov)
+    this.http.post<Movimento>("/api/movimenti", newMov)
       .subscribe(addMov => {
         const tmp = structuredClone(this._movimenti$.value);
         const index = this._movimenti$.value.findIndex(mov => mov.movimentoId === addMov.movimentoId);
@@ -70,7 +83,7 @@ export class MovimentiService
           tmp[index] = addMov;
         }
         this._movimenti$.next(tmp);
-        this.fetch(this.conto);
+        this.fetch();
         this.contoSrv.single();
       },error => {
         console.error(error);
