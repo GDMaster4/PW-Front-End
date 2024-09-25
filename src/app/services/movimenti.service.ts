@@ -48,6 +48,8 @@ export class MovimentiService
   list(filters:MovimentiFilters)
   {
     let q=omitBy(filters,isNil);
+    let result;
+    return result;
   }
 
   add(importo:number,categoria:string,descEstesa:string, destinatarioIban?:string)
