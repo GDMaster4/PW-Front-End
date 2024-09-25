@@ -6,11 +6,11 @@ import { MovimentiService } from '../../services/movimenti.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-movimento',
-  templateUrl: './movimento.component.html',
-  styleUrl: './movimento.component.css'
+  selector: 'add-app-movimento',
+  templateUrl: './add-movimento.component.html',
+  styleUrl: './add-movimento.component.css'
 })
-export class MovimentoComponent
+export class AddMovimentoComponent
 {
   movForm=this.fb.group({
     iban:[''],
@@ -71,7 +71,7 @@ export class MovimentoComponent
         catInvio=categoria+" Uscita";
       }
 
-      if(iban !== undefined)
+      if(iban !== undefined && iban!== null && iban!="")
       {
         if(this.ibans.includes(iban!))
         {

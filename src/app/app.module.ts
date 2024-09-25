@@ -12,7 +12,7 @@ import { AuthService } from './services/auth.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MovimentoDetailComponent } from './components/movimento-detail/movimento-detail.component';
 import { RicaricaComponent } from './pages/ricarica/ricarica.component';
-import { MovimentoComponent } from './pages/movimento/movimento.component';
+import { AddMovimentoComponent } from './pages/add-movimento/add-movimento.component';
 import { NavUserComponent } from './components/nav-user/nav-user.component';
 import { AuthInterceptor } from './utils/auth.interceptor';
 import { IfAuthenticatedDirective } from './directives/if-authenticated.directive';
@@ -29,7 +29,7 @@ import { ModPasswComponent } from './components/mod-passw/mod-passw.component';
     LoginComponent,
     MovimentoDetailComponent,
     RicaricaComponent,
-    MovimentoComponent,
+    AddMovimentoComponent,
     NavUserComponent,
     IfAuthenticatedDirective,
     ConfirmEmailComponent,

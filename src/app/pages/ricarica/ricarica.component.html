@@ -1,23 +1,25 @@
 <div class="container mt-5">
-    <div class="row">
-        <div class="col col-lg-4"></div>
-        <div class="col col-lg-4 col-md-12 border rounded p-4">
+    <div class="row justify-content-center">
+        <div class="col col-lg-4 col-md-12 card-custom">
             <form [formGroup]="ricaricaForm">
-                <div class="mb-3">
-                    <label for="operatore">Scegli operatore</label>
+                <h4 class="card-title purple-text text-center mb-4">Ricarica Telefono</h4>
+                
+                <div class="form-group">
+                    <label for="operatore" class="purple-text">Scegli operatore</label>
                     <div class="input-group">
-                        <select name="operatore" id="operatore" formControlName="operatore" class="w-100">
+                        <select name="operatore" id="operatore" formControlName="operatore" class="form-select">
                             <ng-container *ngFor="let operatore of operatori">
                                 <option value="{{operatore}}">
-                                    <img src="../../../assets/img/{{operatore}}.png" class="img-operators">
-                                    
+                                    <img src="../../../assets/img/{{operatore}}.png" class="img-operators me-2">
                                     {{operatore}}
                                 </option>
                             </ng-container>
                         </select>
                     </div>
-                    <br>
-                    <label for="NumCell">Num. da ricaricare</label>
+                </div>
+
+                <div class="form-group">
+                    <label for="NumCell" class="purple-text">Num. da ricaricare</label>
                     <div class="input-group">
                         <input
                             id="NumCell"
@@ -28,7 +30,10 @@
                             [maxlength]="10"
                         />
                     </div>
-                    <label for="Conferma">Conferma num. da ricaricare</label>
+                </div>
+
+                <div class="form-group">
+                    <label for="Conferma" class="purple-text">Conferma num. da ricaricare</label>
                     <div class="input-group">
                         <input
                             id="Conferma"
@@ -40,23 +45,25 @@
                             [maxlength]="10"
                         />
                     </div>
-                    <div class="text-danger" *ngIf="errCell">
-                      {{ errCell }}
+                    <div class="text-danger mt-1" *ngIf="errCell">
+                        {{ errCell }}
                     </div>
-                    <br>
-                    <label for="importo">Scegli importo</label>
+                </div>
+
+                <div class="form-group">
+                    <label for="importo" class="purple-text">Scegli importo</label>
                     <div class="input-group">
-                        <select name="importo" id="importo" formControlName="importo" class="w-100">
-                            <option value="5">5</option>
-                            <option value="10">10</option>
-                            <option value="15">15</option>
-                            <option value="20">20</option>
-                            <option value="25">25</option>
+                        <select name="importo" id="importo" formControlName="importo" class="form-select">
+                            <option value="5">5 €</option>
+                            <option value="10">10 €</option>
+                            <option value="15">15 €</option>
+                            <option value="20">20 €</option>
+                            <option value="25">25 €</option>
                         </select>
                     </div>
                 </div>
-                <br>
-                <input type="submit" class="btn btn-outline-primary w-100" (click)="ricarica()" value="Esegui Ricarica">
+
+                <input type="submit" class="btn btn-dark-purple w-100" (click)="ricarica()" value="Esegui Ricarica">
             </form>
         </div>
     </div>

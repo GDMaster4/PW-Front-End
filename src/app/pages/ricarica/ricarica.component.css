@@ -1,12 +1,77 @@
-.dropdown-item {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-  }
-  
-  .img-operators {
-    width: 20px; /* Puoi regolare la dimensione come preferisci */
-    height: 20px;
-    margin-right: 10px;
-  }
-  
+/* Stile personalizzato della card */
+.card-custom {
+  background-color: #ffffff; /* Bianco per la card */
+  color: #7c4a9b; /* Viola scuro per il testo */
+  border: 2px solid #7c4a9b; /* Bordo viola scuro */
+  border-radius: 1rem; /* Bordi arrotondati */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Ombra leggera */
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Raggruppamento dei campi del form */
+.form-group {
+  margin-bottom: 1.5rem; /* Spazio tra i gruppi di input */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Pulsante viola scuro */
+.btn-dark-purple {
+  background-color: #7c4a9b; /* Viola scuro per il bottone */
+  color: #ffffff; /* Testo bianco */
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-dark-purple:hover {
+  background-color: #4e1f6b; /* Viola più scuro al passaggio del mouse */
+}
+
+/* Personalizzazione del font */
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Colore viola per le etichette */
+.purple-text {
+  color: #7c4a9b;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Stile del titolo della card */
+.card-title {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* Stile input */
+.form-control, .form-select {
+  border-radius: 0.5rem;
+  border: 1px solid #7c4a9b;
+  padding: 0.75rem;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: #4e1f6b;
+  box-shadow: 0 0 5px rgba(76, 0, 153, 0.2);
+}
+
+/* Immagine dell'operatore */
+.img-operators {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+/* Colore del testo di errore */
+.text-danger {
+  font-size: 0.875rem;
+  color: #dc3545 !important;
+  margin-top: 0.5rem;
+}
