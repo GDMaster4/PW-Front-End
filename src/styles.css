@@ -22,11 +22,10 @@ body {
 }
 .excel
 {
-  bottom: 310px;
   background-color: rgb(13, 255, 0);
 }
 .csv
 {
-  bottom:385px;
+  bottom: 85px;
   background-color: blue;
 }
