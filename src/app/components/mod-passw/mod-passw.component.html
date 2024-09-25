@@ -1,0 +1,43 @@
+<ng-template #content let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Modifica Password</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+        <form [formGroup]="passwForm">
+            <div class="mb-3">
+                <label for="nuovaPassw">Inserisci la nuova password</label>
+                <div class="input-group">
+                    <input
+                        id="nuovaPassw"
+                        class="form-control"
+                        name="nuovaPassw"
+                        type="password"
+                        formControlName="nuovaPassw"
+                        (input)="controlloPassw()"
+                    />
+                </div>
+                <div class="text-danger" *ngIf="errPassw">
+                  {{ errPassw }}
+                </div>
+                <label for="Conferma">Conferma password</label>
+                <div class="input-group">
+                    <input
+                        id="Conferma"
+                        class="form-control"
+                        name="Conferma"
+                        type="password"
+                        formControlName="Conferma"
+                        (input)="controlloTesto()"
+                    />
+                </div>
+                <div class="text-danger" *ngIf="errConferma">
+                  {{ errConferma }}
+                </div>
+            </div>
+            <br>
+            <input type="submit" class="btn btn-outline-primary w-100" (click)="nuovaPassw()" value="Modifica Password">
+        </form>
+	</div>
+</ng-template>
+<button class="btn btn-lg btn-outline-primary w-100" (click)="open(content)">Modifica la password</button>
