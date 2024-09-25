@@ -20,6 +20,8 @@ import { DateAdapter, DateParserFormatter } from './utils/Datepicker-adapter';
 import { ConfirmEmailComponent } from './pages/confirm-email/confirm-email.component';
 import { ProfiloComponent } from './pages/profilo/profilo.component';
 import { ModPasswComponent } from './components/mod-passw/mod-passw.component';
+import { MovFiltersComponent } from './components/mov-filters/mov-filters.component';
+import { MovimentiComponent } from './pages/movimenti/movimenti.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { ModPasswComponent } from './components/mod-passw/mod-passw.component';
     IfAuthenticatedDirective,
     ConfirmEmailComponent,
     ProfiloComponent,
-    ModPasswComponent
+    ModPasswComponent,
+    MovFiltersComponent,
+    MovimentiComponent
   ],
   imports: [
     BrowserModule,

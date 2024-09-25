@@ -34,7 +34,7 @@ const routes: Routes = [
     canActivate: [authGuard]
   },
   {
-    path: 'movimento',
+    path: 'add-movimento',
     component:AddMovimentoComponent,    
     canActivate: [authGuard]
   },
