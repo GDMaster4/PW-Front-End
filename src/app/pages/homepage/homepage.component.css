@@ -79,3 +79,8 @@ h3 span {
     white-space: normal; /* Allow text to wrap */
     flex-grow: 1; /* Allow the text area to grow and fill space */
 }
+
+.card-subtitle {
+    margin-bottom: 0; /* Adjust spacing if necessary */
+}
+

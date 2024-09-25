@@ -36,14 +36,14 @@
   <div class="row mb-3">
     <div class="col-4 fw-bold">Categoria:</div>
     <div class="col-8 fw-normal ">
-      {{ movimento?.categoriaMovimento!.tipologia | titlecase }}
+      {{ movimento?.categoriaMovimento!.nomeCategoria| titlecase }}
     </div>
   </div>
 
   <div class="row mb-3">
     <div class="col-4 fw-bold">Descrizione:</div>
     <div class="col-8 fw-normal ">
-      {{ movimento?.descrizioneEstesa }}
+      {{ movimento!.descrizioneEstesa.charAt(0).toUpperCase()+movimento!.descrizioneEstesa.slice(1)}}
     </div>
   </div>
 </div>
