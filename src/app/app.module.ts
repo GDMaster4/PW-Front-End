@@ -22,6 +22,8 @@ import { ProfiloComponent } from './pages/profilo/profilo.component';
 import { ModPasswComponent } from './components/mod-passw/mod-passw.component';
 import { MovFiltersComponent } from './components/mov-filters/mov-filters.component';
 import { MovimentiComponent } from './pages/movimenti/movimenti.component';
+import { MovimentiService } from './services/movimenti.service';
+import { ContoService } from './services/conto.service';
 
 @NgModule({
   declarations: [
@@ -59,7 +61,9 @@ import { MovimentiComponent } from './pages/movimenti/movimenti.component';
       useClass: DateParserFormatter
     },
     {provide: HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true},
-    AuthService
+    AuthService,
+    MovimentiService,
+    ContoService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,8 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ContoService } from '../../services/conto.service';
 import { MovimentiFilters, MovimentiService } from '../../services/movimenti.service';
-import { omitBy, isNil } from 'lodash';
-import { ReplaySubject, Subject, takeUntil, map, debounceTime, Observable } from 'rxjs';
+import { ReplaySubject, Subject, takeUntil, debounceTime } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Movimento } from '../../entities/movimento.entity';
 import { AuthService } from '../../services/auth.service';
@@ -34,16 +33,6 @@ export class HomepageComponent implements OnInit,OnDestroy
         takeUntil(this.destroyed$),
         debounceTime(150)
       )
-    this.updateQueryParams$
-        .pipe(
-          takeUntil(this.destroyed$),
-          map(filters => omitBy(filters, isNil)),
-          map(filters => omitBy(filters, val => val === '')),
-          debounceTime(150)
-        )
-        .subscribe(filters => {
-          this.router.navigate([], {queryParams: filters});
-        });
     this.activatedRoute.data.subscribe(data => console.log(data));    
   }
 
@@ -51,10 +40,6 @@ export class HomepageComponent implements OnInit,OnDestroy
   {
     this.destroyed$.next();
     this.destroyed$.complete();
-  }
-
-  applyFilters(value: MovimentiFilters) {
-    this.updateQueryParams$.next(value);
   }
 
   openModal(movimento: Movimento)
@@ -70,7 +55,7 @@ export class HomepageComponent implements OnInit,OnDestroy
       .subscribe(movimenti=>{
         data=movimenti.map(movimento => {
           return {
-            contoCorrente:movimento.contoCorrente.iban,
+            IBAN:movimento.contoCorrente.iban,
             data:movimento.data,
             importo:movimento.importo,
             saldo:movimento.saldo,
@@ -96,7 +81,7 @@ export class HomepageComponent implements OnInit,OnDestroy
       .subscribe(movimenti=>{
         data=movimenti.map(movimento => {
           return {
-            contoCorrente:movimento.contoCorrente.iban,
+            IBAN:movimento.contoCorrente.iban,
             data:movimento.data,
             importo:movimento.importo,
             saldo:movimento.saldo,
