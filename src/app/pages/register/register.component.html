@@ -1,22 +1,24 @@
-<section class="bg-light py-3 py-md-3">
+<section class="py-3 py-md-3">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4">
-        <div class="card border border-light-subtle rounded-3 shadow-sm">
-          <div class="card-body p-3 p-md-4 p-xl-5">
-            <h2 class="fs-6 fw-normal text-center text-secondary mb-4">
-              Inserisci qui i tuoi dettagli per registrarti
-            </h2>
+        <div class="card-custom rounded-3 shadow-sm">
+          <div class="card-body">
+            <h1 class="fs-6 fw-bold text-center mb-4">
+              REGISTRATI A BANK FIVE
+            </h1>
             <form (ngSubmit)="register()" [formGroup]="registerForm">
               <div class="row gy-2 overflow-hidden">
+                <!-- Nome Titolare -->
                 <div class="col-12">
-                  <div class="form-floating mb-2">
+                  <div class="form-outline mb-4">
+                    <label class="form-label text-primary purple-text fw-bold" for="nomeTitolare">Nome</label>
                     <input
                       type="text"
                       class="form-control"
                       name="nomeTitolare"
                       id="nomeTitolare"
-                      placeholder="Nome"
+                      placeholder="Inserisci il tuo nome"
                       required
                       formControlName="nomeTitolare"
                       [ngClass]="{
@@ -25,7 +27,6 @@
                           registerForm.get('nomeTitolare')!.touched
                       }"
                     />
-                    <label for="nomeTitolare" class="form-label">Nome</label>
                     <p
                       class="fs-6 mb-0 text-danger"
                       *ngIf="
@@ -37,14 +38,16 @@
                     </p>
                   </div>
                 </div>
+                <!-- Cognome Titolare -->
                 <div class="col-12">
-                  <div class="form-floating mb-2">
+                  <div class="form-outline mb-4">
+                    <label class="form-label text-primary purple-text fw-bold" for="cognomeTitolare">Cognome</label>
                     <input
                       type="text"
                       class="form-control"
                       name="cognomeTitolare"
                       id="cognomeTitolare"
-                      placeholder="Last Name"
+                      placeholder="Inserisci il tuo cognome"
                       required
                       formControlName="cognomeTitolare"
                       [ngClass]="{
@@ -53,7 +56,6 @@
                           registerForm.get('cognomeTitolare')!.touched
                       }"
                     />
-                    <label for="cognomeTitolare" class="form-label">Cognome</label>
                     <p
                       class="fs-6 mb-0 text-danger"
                       *ngIf="
@@ -65,14 +67,16 @@
                     </p>
                   </div>
                 </div>
+                <!-- Email -->
                 <div class="col-12">
-                  <div class="form-floating mb-2">
+                  <div class="form-outline mb-4">
+                    <label class="form-label text-primary purple-text fw-bold" for="email">E-mail</label>
                     <input
                       type="email"
                       class="form-control"
                       name="email"
                       id="email"
-                      placeholder="name@example.com"
+                      placeholder="Inserisci la tua email"
                       required
                       formControlName="email"
                       [ngClass]="{
@@ -81,7 +85,6 @@
                           registerForm.get('email')!.touched
                       }"
                     />
-                    <label for="email" class="form-label">E-mail</label>
                     <p
                       class="fs-6 mb-0 text-danger"
                       *ngIf="registerForm.get('email')?.errors"
@@ -90,19 +93,19 @@
                     </p>
                   </div>
                 </div>
+                <!-- Password -->
                 <div class="col-12">
-                  <div class="form-floating mb-2">
+                  <div class="form-outline mb-4">
+                    <label class="form-label text-primary purple-text fw-bold" for="password">Password</label>
                     <input
                       type="password"
                       class="form-control"
                       name="password"
                       id="password"
-                      value=""
-                      placeholder="Password"
+                      placeholder="Inserisci la tua password"
                       required
                       formControlName="password"
                     />
-                    <label for="password" class="form-label">Password</label>
                     <p
                       class="fs-6 mb-0 text-danger"
                       *ngIf="
@@ -110,32 +113,28 @@
                         registerForm.get('password')?.touched
                       "
                     >
-                      La password deve contenere almeno 8 caratteri, 1
-                      maiuscola, 1 minuscola, 1 numero e 1 carattere speciale
-                      (#?!$%^&*-)
+                      La password deve contenere almeno 8 caratteri, 1 maiuscola, 1 minuscola, 1 numero e 1 carattere speciale (#?!$%^&*-)
                     </p>
                   </div>
                 </div>
+                <!-- Pulsante Iscriviti -->
                 <div class="col-12">
                   <div class="d-grid my-3">
                     <button
-                      class="btn btn-primary btn-lg"
+                      class="btn btn-primary btn-block mb-4 w-100"
                       type="submit"
                       [disabled]="!registerForm.valid"
                     >
-                      Iscriviti
+                      Registrati
                     </button>
                   </div>
                 </div>
-                <div class="col-12">
-                  <p class="m-0 text-secondary text-center">
-                    Hai già un account?
-                    <a
-                      [routerLink]="['/login']"
-                      class="link-primary text-decoration-none"
-                      >Effettua il login</a
-                    >
-                  </p>
+                <!-- Link per Login -->
+                <div class="text-center mt-3">
+                  Hai già un account?
+                  <a [routerLink]="['/login']" class="underline-on-hover">
+                    <span class="fw-bold">Effettua il login</span>
+                  </a>
                 </div>
               </div>
             </form>
