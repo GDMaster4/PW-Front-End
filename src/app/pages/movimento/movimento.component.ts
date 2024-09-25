@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Observable, Subject, takeUntil } from 'rxjs';
-import { AuthService } from '../../services/auth.service';
 import { ContoService } from '../../services/conto.service';
 import { MovimentiService } from '../../services/movimenti.service';
 import { Router } from '@angular/router';
