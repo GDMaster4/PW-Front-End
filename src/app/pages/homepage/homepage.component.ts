@@ -78,8 +78,7 @@ export class HomepageComponent implements OnInit,OnDestroy
             descrizioneEstesa:movimento.descrizioneEstesa
           }
         });
-      })
-      console.log(data)
+      });
     const csvData = this.convertToCSV(data);
     const blob = new Blob([csvData], { type: 'text/csv' });
     const url = window.URL.createObjectURL(blob);
@@ -92,11 +91,20 @@ export class HomepageComponent implements OnInit,OnDestroy
 
   exportToExcel()
   {
-    let data:Movimento[]=[];
+    let data:any[]=[];
     this.movimenti$
-      .pipe(
-        map(movimenti => data=movimenti)
-      );
+      .subscribe(movimenti=>{
+        data=movimenti.map(movimento => {
+          return {
+            contoCorrente:movimento.contoCorrente.iban,
+            data:movimento.data,
+            importo:movimento.importo,
+            saldo:movimento.saldo,
+            categoria:movimento.categoriaMovimento.nomeCategoria,
+            descrizioneEstesa:movimento.descrizioneEstesa
+          }
+        });
+      });
     const worksheet = XLSX.utils.json_to_sheet(data);
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, 'Movimenti');
