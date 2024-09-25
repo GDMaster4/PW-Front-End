@@ -34,7 +34,7 @@ const routes: Routes = [
     canActivate: [authGuard]
   },
   {
-    path: 'bonifico',
+    path: 'movimento',
     component:MovimentoComponent,    
     canActivate: [authGuard]
   },
