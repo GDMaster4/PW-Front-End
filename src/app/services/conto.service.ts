@@ -13,7 +13,7 @@ export class ContoService
   private _conto$ = new BehaviorSubject<Conto | null>(null);
   conto$ = this._conto$.asObservable();
   
-  constructor(protected http:HttpClient, protected authSrv:AuthService, protected movSrv:MovimentiService)
+  constructor(protected http:HttpClient, protected authSrv:AuthService)
   {
     this.authSrv.currentUser$
       .subscribe(user => {
@@ -43,7 +43,6 @@ export class ContoService
       },error => {
         console.error(error);
       });
-    this.movSrv.add(0,"Apertura Conto","Apertura del conto");
   }
 
   list()

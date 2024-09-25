@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { interval, Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { ContoService } from '../../services/conto.service';
+import { MovimentiService } from '../../services/movimenti.service';
 
 @Component({
   selector: 'app-confirm-email',
@@ -14,11 +15,12 @@ export class ConfirmEmailComponent implements OnInit,OnDestroy
   countdown: number = 5;  // Numero di secondi del countdown
   private countdownSubscription!: Subscription;
 
-  constructor(private router: Router, protected contoSrv:ContoService) {}
+  constructor(private router: Router, protected contoSrv:ContoService,protected movSrv:MovimentiService) {}
 
   ngOnInit()
   {
     this.contoSrv.add();
+    this.movSrv.add(0,"Apertura Conto","Apertura del conto");
     // Intervallo di 1 secondo
     this.countdownSubscription = interval(1000)
       .pipe(take(this.countdown))  // Limita l'intervallo alla durata del countdown
