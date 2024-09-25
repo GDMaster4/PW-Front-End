@@ -35,7 +35,6 @@ export class RicaricaComponent
 
   ricarica()
   {
-    console.log(this.ricaricaForm.valid)
     if(this.ricaricaForm.valid)
     {
       const {importo,NumCell}= this.ricaricaForm.value!;

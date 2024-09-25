@@ -7,6 +7,7 @@ import { RicaricaComponent } from './pages/ricarica/ricarica.component';
 import { BonificoComponent } from './pages/bonifico/bonifico.component';
 import { ConfirmEmailComponent } from './pages/confirm-email/confirm-email.component';
 import { authGuard } from './guards/auth.guard';
+import { ProfiloComponent } from './pages/profilo/profilo.component';
 
 const routes: Routes = [
   {
@@ -40,6 +41,11 @@ const routes: Routes = [
   {
     path: 'confirm',
     component:ConfirmEmailComponent
+  },
+  {
+    path: 'profilo',
+    component:ProfiloComponent,    
+    canActivate: [authGuard]
   }
 ];
 

@@ -19,6 +19,8 @@ import { AuthInterceptor } from './utils/auth.interceptor';
 import { IfAuthenticatedDirective } from './directives/if-authenticated.directive';
 import { DateAdapter, DateParserFormatter } from './utils/Datepicker-adapter';
 import { ConfirmEmailComponent } from './pages/confirm-email/confirm-email.component';
+import { ProfiloComponent } from './pages/profilo/profilo.component';
+import { ModPasswComponent } from './components/mod-passw/mod-passw.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { ConfirmEmailComponent } from './pages/confirm-email/confirm-email.compo
     BonificoComponent,
     NavUserComponent,
     IfAuthenticatedDirective,
-    ConfirmEmailComponent
+    ConfirmEmailComponent,
+    ProfiloComponent,
+    ModPasswComponent
   ],
   imports: [
     BrowserModule,
