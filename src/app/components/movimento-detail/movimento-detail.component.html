@@ -1,6 +1,7 @@
 
-<div class="modal-header bg-primary text-white">
+<div class="modal-header bg-primary text-white" style="background-color: #7c4a9b !important;">
   <h4 class="modal-title text-center w-100 fw-bold">Dettagli del Movimento</h4>
+  <button type="button" class="btn-close btn-close-white" aria-label="Close" (click)="modal.dismissAll('Cross click')"></button>
 </div>
 
 <div class="modal-body p-4">
@@ -47,8 +48,3 @@
   </div>
 </div>
 
-<div class="modal-footer">
-  <button type="button" class="btn btn-secondary fw-semibold" (click)="modal.dismissAll('Cancel click')">
-    <i class="bi bi-x-circle"></i> Chiudi
-  </button>
-</div>
