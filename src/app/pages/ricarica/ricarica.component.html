@@ -1,11 +1,14 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col col-lg-4 col-md-12 card-custom">
+            <!-- Header personalizzato -->
+            <div class="header-custom text-center py-3 mb-4">
+                <h4 class="text-uppercase text-white">Ricarica Telefono</h4>
+            </div>
+
             <form [formGroup]="ricaricaForm">
-                <h4 class="card-title purple-text text-center mb-4">Ricarica Telefono</h4>
-                
                 <div class="form-group">
-                    <label for="operatore" class="purple-text">Scegli operatore</label>
+                    <label for="operatore" class="text-dark font-weight-bold">Scegli operatore</label>
                     <div class="input-group">
                         <select name="operatore" id="operatore" formControlName="operatore" class="form-select">
                             <ng-container *ngFor="let operatore of operatori">
@@ -19,7 +22,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="NumCell" class="purple-text">Num. da ricaricare</label>
+                    <label for="NumCell" class="text-dark font-weight-bold">Num. da ricaricare</label>
                     <div class="input-group">
                         <input
                             id="NumCell"
@@ -33,7 +36,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="Conferma" class="purple-text">Conferma num. da ricaricare</label>
+                    <label for="Conferma" class="text-dark font-weight-bold">Conferma num. da ricaricare</label>
                     <div class="input-group">
                         <input
                             id="Conferma"
@@ -51,7 +54,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="importo" class="purple-text">Scegli importo</label>
+                    <label for="importo" class="text-dark font-weight-bold">Scegli importo</label>
                     <div class="input-group">
                         <select name="importo" id="importo" formControlName="importo" class="form-select">
                             <option value="5">5 €</option>

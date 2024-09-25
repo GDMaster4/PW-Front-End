@@ -1,0 +1,89 @@
+/* Container generale */
+.container {
+    background-color: #ffffff; /* Sfondo bianco per il form */
+    border: 2px solid #7c4a9b; /* Bordo viola scuro */
+    border-radius: 1rem; /* Bordi arrotondati */
+    padding: 1.5rem; /* Ridotto padding interno */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Ombra leggera */
+    position: relative; /* Per assicurarsi che l'header rimanga all'interno */
+}
+
+/* Header personalizzato per il titolo */
+.header-custom {
+    background-color: #7c4a9b; /* Sfondo viola scuro */
+    color: #ffffff; /* Testo bianco */
+    text-align: center; /* Testo centrato */
+    padding: 1rem; /* Spazio interno per il titolo */
+    border-radius: 1rem 1rem 0 0; /* Bordo arrotondato solo sopra */
+    margin: -1.5rem -1.5rem 1rem -1.5rem; /* Rimuove margini laterali e allinea al bordo */
+    width: calc(100% + 3rem); /* Espande la larghezza dell'header per coprire il padding */
+}
+
+.header-custom h2 {
+    margin: 0; /* Rimuove il margine dal titolo */
+    font-size: 1.5rem; /* Dimensione del testo */
+    text-transform: uppercase; /* Testo in maiuscolo */
+}
+
+/* Etichette (label) */
+label {
+    color: #000; /* Etichette nere */
+    font-weight: bold; /* Grassetto */
+    display: block; /* Visualizza le etichette in blocco */
+    margin-bottom: 0.3rem; /* Ridotto spazio sotto le etichette */
+}
+
+/* Input e Select */
+.form-control, .form-select {
+    border-radius: 0.5rem; /* Bordi arrotondati */
+    border: 1px solid #7c4a9b; /* Bordo viola scuro */
+    padding: 0.75rem; /* Spazio interno */
+    transition: all 0.3s ease; /* Transizione morbida per focus */
+    margin-bottom: 1rem; /* Ridotto margine sotto gli input */
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #4e1f6b; /* Bordo viola più scuro al focus */
+    box-shadow: 0 0 5px rgba(76, 0, 153, 0.2); /* Effetto ombra al focus */
+}
+
+/* Pulsante principale */
+.btn-outline-primary {
+    background-color: #7c4a9b; /* Viola scuro per il bottone */
+    color: #ffffff; /* Testo bianco */
+    border: none;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+    background-color: #4e1f6b; /* Viola più scuro al passaggio del mouse */
+}
+
+/* Margine ridotto per gli input condizionali */
+#iban, #nome, #cognome {
+    margin-top: 0.75rem; /* Spazio più contenuto sopra gli input condizionali */
+}
+
+/* Per lo specifico blocco IBAN, Nome e Cognome */
+.input-group {
+    margin-bottom: 1rem; /* Ridotto spazio tra gli input */
+}
+
+/* Contenitore del form ridimensionato */
+.container.mt-5.w-50 {
+    max-width: 600px; /* Massima larghezza per il form */
+}
+
+/* Personalizzazione del font */
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Colore del testo di errore */
+.text-danger {
+    font-size: 0.875rem;
+    color: #dc3545 !important;
+    margin-top: 0.5rem;
+}

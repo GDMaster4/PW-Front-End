@@ -5,8 +5,29 @@
   border: 2px solid #7c4a9b; /* Bordo viola scuro */
   border-radius: 1rem; /* Bordi arrotondati */
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Ombra leggera */
-  padding: 2rem;
+  padding: 2rem; /* Padding intorno al contenuto, ma non include l'header */
   margin-bottom: 2rem;
+  position: relative;
+}
+
+/* Header personalizzato */
+.header-custom {
+  background-color: #7c4a9b; /* Viola scuro */
+  color: #ffffff; /* Testo bianco */
+  border-radius: 1rem 1rem 0 0; /* Arrotondamento solo nella parte superiore */
+  text-align: center;
+  padding: 1rem; /* Spazio interno per rendere il testo più leggibile */
+  margin: -2rem -2rem 1rem -2rem; /* Rimuove margini e fa aderire l'header ai bordi della card */
+  width: calc(100% + 4rem); /* Espande l'header oltre i bordi per coprire l'intera larghezza */
+}
+
+/* Stile etichette (label) */
+.text-dark {
+  color: #000; /* Nero per le etichette */
+}
+
+.font-weight-bold {
+  font-weight: bold; /* Grassetto per le etichette */
 }
 
 /* Raggruppamento dei campi del form */
@@ -33,20 +54,6 @@
 /* Personalizzazione del font */
 body {
   font-family: 'Roboto', sans-serif;
-}
-
-/* Colore viola per le etichette */
-.purple-text {
-  color: #7c4a9b;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-/* Stile del titolo della card */
-.card-title {
-  font-size: 24px;
-  text-align: center;
-  margin-bottom: 1rem;
 }
 
 /* Stile input */
