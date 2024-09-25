@@ -73,7 +73,8 @@ export class MovimentoComponent
 
       if(iban !== undefined)
       {
-        if(this.ibans.includes(iban!)) {
+        if(this.ibans.includes(iban!))
+        {
           this.movSrv.add(importo!,catInvio,casuale!,iban!);
           this.router.navigate(['/home']);
         }
