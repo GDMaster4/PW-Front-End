@@ -52,6 +52,7 @@ export class MovimentiService
 
   add(importo:number,categoria:string,descEstesa:string, destinatarioIban?:string)
   {
+    console.log(categoria)
     let newMov;    
     if(destinatarioIban === undefined)
     {
@@ -71,7 +72,7 @@ export class MovimentiService
       }
     }
 
-    this.http.post<Movimento>("/api/movimenti/", newMov)
+    this.http.post<Movimento>("/api/movimenti", newMov)
       .subscribe(addMov => {
         const tmp = structuredClone(this._movimenti$.value);
         const index = this._movimenti$.value.findIndex(mov => mov.movimentoId === addMov.movimentoId);

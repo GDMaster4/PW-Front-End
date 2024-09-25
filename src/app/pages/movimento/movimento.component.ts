@@ -66,18 +66,24 @@ export class MovimentoComponent
     if(this.movForm.valid)
     {
       const {iban,importo,casuale,categoria}=this.movForm.value!;
+      let catInvio= categoria!;
+      if(categoria=="Bonifico") {
+        catInvio=categoria+" Uscita";
+      }
+
       if(iban !== undefined)
       {
         if(this.ibans.includes(iban!)) {
-          this.movSrv.add(importo!,categoria!,casuale!,iban!);
+          this.movSrv.add(importo!,catInvio,casuale!,iban!);
           this.router.navigate(['/home']);
         }
         else {
           return;
         }
       }
-      else {
-        this.movSrv.add(importo!,categoria!,casuale!);
+      else
+      {
+        this.movSrv.add(importo!,catInvio,casuale!);
         this.router.navigate(['/home']);
       }
     }
