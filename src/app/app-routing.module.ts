@@ -43,11 +43,11 @@ const routes: Routes = [
   },
   {
     path: 'movimenti',
-    component:MovimentiComponent,    
-    canActivate: [authGuard],
+    component:MovimentiComponent,   
+    canActivate: [authGuard], 
     resolve:{
       filters:movimentiFiltersResolver,
-      todos:MovimentiResolver
+      movimenti:MovimentiResolver
     },
     runGuardsAndResolvers:"paramsOrQueryParamsChange"
   },

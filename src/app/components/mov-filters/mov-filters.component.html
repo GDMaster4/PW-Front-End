@@ -1,1 +1,53 @@
-<p>mov-filters works!</p>
+<form [formGroup]="filtersForm">
+    <div class="row align-items-end">
+      <div class="col w-100">
+        <label class="form-label" for="numero">Numero:</label>
+        <input formControlName="numero" type="number" class="form-control" placeholder="Numero dei movimenti" [min]="1">
+      </div>
+      <div class="col w-100">
+        <label for="categoria">Categoria del movimento: </label> 
+        <div class="input-group">
+            <select formControlName="categoria" name="categoria" id="categoria" class="w-100">
+                <option value="Apertura Conto">Apertura Conto</option>
+                <option value="Bonifico Entrata">Bonifico entrata</option>
+                <option value="Bonifico Uscita">Bonifico uscita</option>
+                <option value="Prelievo Contanti">Prelievo Contanti</option>
+                <option value="Versamento Bancomat">Versamento Bancomat</option>
+            </select>
+        </div>
+      </div>
+      <div class="col w-100">
+        <label for="firstData">Prima Data</label>
+        <div class="input-group">
+            <input
+                id="firstData"
+                class="form-control"
+                placeholder="yyyy-mm-dd"
+                name="dp"
+                ngbDatepicker
+                #dp="ngbDatepicker"
+                formControlName="firstData"
+            />
+            <button class="btn btn-outline-secondary bi bi-calendar3" (click)="dp.toggle()" type="button"></button>
+        </div>
+      </div>
+      <div class="col w-100">
+        <label for="secondData">Seconda Data</label>
+        <div class="input-group">
+            <input
+                id="secondData"
+                class="form-control"
+                placeholder="yyyy-mm-dd"
+                name="dp"
+                ngbDatepicker
+                #dp="ngbDatepicker"
+                formControlName="secondData"
+            />
+            <button class="btn btn-outline-secondary bi bi-calendar3" (click)="dp.toggle()" type="button"></button>
+        </div>
+      </div>
+      <div class="col w-100">
+        <button type="submit" class="btn btn-primary">Search</button>
+      </div>
+    </div>
+</form>
