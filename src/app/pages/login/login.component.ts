@@ -20,7 +20,15 @@ export class LoginComponent implements OnInit, OnDestroy
 
   protected destroyed$ = new Subject<void>();
 
-  constructor( protected fb: FormBuilder, protected authSrv: AuthService, protected router: Router) {}
+  constructor( protected fb: FormBuilder, protected authSrv: AuthService, protected router: Router)
+  {
+    this.authSrv.currentUser$
+      .subscribe(user => {
+        if (user) {
+          this.router.navigate(['/home']);
+        }
+      })
+  }
 
   ngOnInit()
   {
