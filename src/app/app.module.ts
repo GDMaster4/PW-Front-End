@@ -11,7 +11,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MovimentoDetailComponent } from './components/movimento-detail/movimento-detail.component';
-import { MovimentiComponent } from './components/movimenti/movimenti.component';
 import { RicaricaComponent } from './pages/ricarica/ricarica.component';
 import { BonificoComponent } from './pages/bonifico/bonifico.component';
 import { NavUserComponent } from './components/nav-user/nav-user.component';
@@ -29,7 +28,6 @@ import { ModPasswComponent } from './components/mod-passw/mod-passw.component';
     RegisterComponent,
     LoginComponent,
     MovimentoDetailComponent,
-    MovimentiComponent,
     RicaricaComponent,
     BonificoComponent,
     NavUserComponent,
