@@ -1,5 +1,5 @@
 .btn-dark-purple {
-    background-color: #6a1b9a; /* Viola scuro per il bottone */
+    background-color: #7c4a9b; /* Viola scuro per il bottone */
     color: #ffffff; /* Testo bianco */
     border: none;
     padding: 0.75rem 1.5rem;
@@ -8,5 +8,6 @@
 }
 
 .btn-dark-purple:hover {
-    background-color: #4e1f6b; /* Viola ancora più scuro al passaggio del mouse */
+    background-color: #6a1b9a; /* Viola ancora più scuro al passaggio del mouse */
 }
+
