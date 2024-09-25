@@ -17,7 +17,7 @@ export class RicaricaComponent
     operatore: ['', Validators.required]
   });
   errCell:string="";
-  operatori=["Iliad","Vodafone","Tim","Fastweb","WindTre","Coop Mobile","Very Mobile","Altro"];
+  operatori=["Iliad","Vodafone","Tim","Fastweb","Windtre","CoopVoce","VeryMobile","Altro"];
 
   constructor( protected fb: FormBuilder, protected movSrv: MovimentiService, protected router: Router) {}
 

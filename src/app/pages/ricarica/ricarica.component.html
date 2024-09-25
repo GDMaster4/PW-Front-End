@@ -8,7 +8,11 @@
                     <div class="input-group">
                         <select name="operatore" id="operatore" formControlName="operatore" class="w-100">
                             <ng-container *ngFor="let operatore of operatori">
-                                <option value="{{operatore}}">{{operatore}}</option>
+                                <option value="{{operatore}}">
+                                    <img src="../../../assets/img/{{operatore}}.png" class="img-operators">
+                                    
+                                    {{operatore}}
+                                </option>
                             </ng-container>
                         </select>
                     </div>

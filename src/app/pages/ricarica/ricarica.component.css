@@ -1,0 +1,12 @@
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .img-operators {
+    width: 20px; /* Puoi regolare la dimensione come preferisci */
+    height: 20px;
+    margin-right: 10px;
+  }
+  
