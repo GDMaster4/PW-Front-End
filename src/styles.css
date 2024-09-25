@@ -11,12 +11,22 @@ body {
 
 .fixed-Button
 {
-    bottom: 10px; /* Adjust as needed */
-    width: 70px; /* Imposta la larghezza */
-    height: 70px; /* Imposta l'altezza */
-    position: fixed;
-    border-radius: 50%; 
-    border-color: #333333;
-    border-style: none;
-    right: 20px;
+  bottom: 10px; /* Adjust as needed */
+  width: 70px; /* Imposta la larghezza */
+  height: 70px; /* Imposta l'altezza */
+  position: fixed;
+  border-radius: 50%; 
+  border-color: #333333;
+  border-style: none;
+  right: 20px;
+}
+.excel
+{
+  bottom: 310px;
+  background-color: rgb(13, 255, 0);
+}
+.csv
+{
+  bottom:385px;
+  background-color: blue;
 }
