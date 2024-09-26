@@ -1,0 +1,27 @@
+<div *ngIf="movimento">
+    <div class="card custom-card" (click)="openModal(movimento)">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-start">
+            <div>
+              <h5 class="card-title">{{ movimento.descrizioneEstesa.charAt(0).toUpperCase() + movimento.descrizioneEstesa.slice(1) }}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">
+                Data: {{ movimento.data | date: 'dd/MM/yyyy' }}
+              </h6>
+            </div>
+            <span
+              [ngClass]="{
+                entrata: movimento.categoriaMovimento.tipologia === 'entrata',
+                uscita: movimento.categoriaMovimento.tipologia === 'uscita'
+              }"
+              class="amount"
+            >
+              {{ movimento.categoriaMovimento.tipologia === 'entrata' ? '+' : '-' }}
+              {{ movimento.importo | currency: 'EUR' }}
+            </span>
+          </div>
+          <p class="card-text">
+            Categoria: {{ movimento.categoriaMovimento.nomeCategoria }}
+          </p>
+        </div>
+    </div>
+</div>
