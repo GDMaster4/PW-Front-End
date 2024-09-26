@@ -12,14 +12,17 @@ import { User } from '../../entities/user.entity';
 })
 export class RegisterComponent implements OnInit, OnDestroy
 {
-  constructor(
-    protected fb : FormBuilder,
-    protected authSrv: AuthService,
-    protected router: Router
-  ) {}
+  registerForm = this.fb.group({
+    nomeTitolare: ['', Validators.required],
+    cognomeTitolare: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.pattern(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/)]]
+  })
 
   registerError = ''
   protected destroyed$ = new Subject<void>();
+
+  constructor( protected fb : FormBuilder, protected authSrv: AuthService, protected router: Router) {}
 
   ngOnInit(): void
   {
@@ -38,13 +41,6 @@ export class RegisterComponent implements OnInit, OnDestroy
     this.destroyed$.complete();
   }
 
-  registerForm = this.fb.group({
-    nomeTitolare: ['', Validators.required],
-    cognomeTitolare: ['', Validators.required],
-    email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.pattern(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/)]]
-  })
-
   async register()
   {
     const user: User = {
@@ -56,5 +52,6 @@ export class RegisterComponent implements OnInit, OnDestroy
 
     await this.authSrv.register(user);
     this.registerForm.reset();
+    alert("Controlla la tua casella di posta")
   }
 }
