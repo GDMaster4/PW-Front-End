@@ -32,8 +32,7 @@ export class HomepageComponent implements OnInit,OnDestroy
       .pipe(
         takeUntil(this.destroyed$),
         debounceTime(150)
-      )
-    this.activatedRoute.data.subscribe(data => console.log(data));    
+      )   
   }
 
   ngOnDestroy(): void

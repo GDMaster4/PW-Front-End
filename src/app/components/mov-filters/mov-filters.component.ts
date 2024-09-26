@@ -15,7 +15,7 @@ export class MovFiltersComponent
     categoria: ['', {updateOn: 'change'} ],
     firstData: ['', {updateOn: 'submit'} ],
     secondData: ['', {updateOn: 'submit'} ],
-    numero: [5, { updateOn: 'submit', validators: [Validators.min(1)] }]
+    numero: [9999, { updateOn: 'submit', validators: [Validators.min(1)] }]
   });
 
   @Input()
@@ -23,7 +23,7 @@ export class MovFiltersComponent
   {
     const defaultValue = {
       text: '',
-      numero:99999,
+      numero:9999,
       firstData:'',
       secondData:''
     }
@@ -37,7 +37,11 @@ export class MovFiltersComponent
 
   protected destroyed$ = new Subject<void>();
 
-  constructor(protected fb: FormBuilder){}
+  constructor(protected fb: FormBuilder)
+  {
+    this.filtersForm.reset();
+    this.filterChange.emit({numero:9999});
+  }
 
   ngOnInit(): void
   {
@@ -47,7 +51,7 @@ export class MovFiltersComponent
         filter(_ => this.filtersForm.valid)
       )
       .subscribe(value => {
-        this.filterChange.emit({firstData: value.firstData!,secondData: value.secondData!, numero: value.numero!});
+        this.filterChange.emit({firstData: value.firstData!,secondData: value.secondData!, numero: value.numero!, categoria:value.categoria!});
       });
   }
 

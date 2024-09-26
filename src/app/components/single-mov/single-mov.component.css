@@ -1,0 +1,71 @@
+/* Titoli principali */
+.display-4 {
+    font-size: 2rem; /* Dimensione del titolo */
+    font-weight: bold; /* Grassetto */
+}
+
+/* Stile della card dei movimenti */
+.custom-card {
+    background-color: #ffffff; /* Colore bianco per la card */
+    color: #7c4a9b; /* Viola scuro per il testo */
+    border: 2px solid #7c4a9b; /* Bordo viola scuro */
+    border-radius: 1rem; /* Bordi arrotondati */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Ombra leggera */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transizione per il ridimensionamento e l'ombra */
+}
+
+/* Effetto di hover per allargare la card */
+.custom-card:hover {
+    transform: scale(1.05); /* Aumenta leggermente le dimensioni della card */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Ombra più pronunciata */
+    cursor: pointer;
+}
+
+/* Titoli delle card */
+.card-title {
+    color: #7c4a9b; /* Colore viola scuro */
+}
+
+/* Colore del testo di errore */
+.text-danger {
+    font-size: 0.875rem;
+    color: #dc3545 !important;
+}
+
+/* Colore del testo per entrate e uscite */
+.amount {
+    font-size: 1.25rem; /* Dimensione del testo */
+    font-weight: bold; /* Grassetto */
+}
+
+.entrata {
+    color: green; /* Colore verde per le entrate */
+}
+
+.uscita {
+    color: red; /* Colore rosso per le uscite */
+}
+
+/* Messaggio di avviso per movimenti assenti */
+.alert {
+    margin-top: 1rem; /* Spazio sopra l'allerta */
+    border-radius: 0.5rem; /* Bordi arrotondati */
+}
+
+h4.purple-text {
+    font-weight: bold; /* Rendi il titolo in grassetto */
+    color: #7c4a9b; /* Colore viola scuro */
+    margin: 0; /* Rimuovi margini per ridurre spazio */
+}
+
+.btn-outline-primary {
+    background-color: transparent; /* Sfondo trasparente */
+    border: 2px solid #7c4a9b; /* Bordo viola scuro */
+    color: #7c4a9b; /* Testo viola scuro */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Effetto di transizione */
+}
+
+.btn-outline-primary:hover {
+    background-color: #7c4a9b; /* Colore viola scuro al passaggio del mouse */
+    color: white; /* Testo bianco al passaggio del mouse */
+}

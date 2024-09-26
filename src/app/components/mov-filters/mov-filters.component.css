@@ -1,0 +1,11 @@
+.btn-outline-primary {
+    background-color: transparent; /* Sfondo trasparente */
+    border: 2px solid #7c4a9b; /* Bordo viola scuro */
+    color: #7c4a9b; /* Testo viola scuro */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Effetto di transizione */
+}
+
+.btn-outline-primary:hover {
+    background-color: #7c4a9b; /* Colore viola scuro al passaggio del mouse */
+    color: white; /* Testo bianco al passaggio del mouse */
+}

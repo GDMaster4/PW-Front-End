@@ -8,6 +8,7 @@
         <label for="categoria">Categoria del movimento: </label> 
         <div class="input-group">
             <select formControlName="categoria" name="categoria" id="categoria" class="w-100">
+                <option></option>
                 <option value="Apertura Conto">Apertura Conto</option>
                 <option value="Bonifico Entrata">Bonifico entrata</option>
                 <option value="Bonifico Uscita">Bonifico uscita</option>
@@ -40,14 +41,14 @@
                 placeholder="yyyy-mm-dd"
                 name="dp"
                 ngbDatepicker
-                #dp="ngbDatepicker"
+                #dp2="ngbDatepicker"
                 formControlName="secondData"
             />
-            <button class="btn btn-outline-secondary bi bi-calendar3" (click)="dp.toggle()" type="button"></button>
+            <button class="btn btn-outline-secondary bi bi-calendar3" (click)="dp2.toggle()" type="button"></button>
         </div>
       </div>
       <div class="col w-100">
-        <button type="submit" class="btn btn-primary">Search</button>
+        <input type="submit" class="btn btn-outline-primary" value="Search">
       </div>
     </div>
 </form>

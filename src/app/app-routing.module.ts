@@ -9,8 +9,8 @@ import { ConfirmEmailComponent } from './pages/confirm-email/confirm-email.compo
 import { authGuard } from './guards/auth.guard';
 import { ProfiloComponent } from './pages/profilo/profilo.component';
 import { MovimentiComponent } from './pages/movimenti/movimenti.component';
-import { movimentiFiltersResolver } from './resolvers/mov-filters.resolver';
-import { MovimentiResolver } from './resolvers/mov.resolver';
+import { movimentiFiltersResolver } from './resolvers/movimenti-filters.resolver';
+import { MovimentiResolver } from './resolvers/movimenti.resolver';
 
 const routes: Routes = [
   {
@@ -40,6 +40,11 @@ const routes: Routes = [
     path: 'add-movimento',
     component:AddMovimentoComponent,    
     canActivate: [authGuard]
+  },
+  {
+    path: 'movimenti/?numero',
+    redirectTo:"movimenti",
+    pathMatch:"prefix"
   },
   {
     path: 'movimenti',

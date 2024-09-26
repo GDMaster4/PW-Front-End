@@ -1,8 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 
-import { MovimentiResolver } from './mov.resolver';
+import { MovimentiResolver } from './movimenti.resolver';
 
-describe('ProductsResolver', () => {
+describe('MovimentiResolver', () => {
   let resolver: MovimentiResolver;
 
   beforeEach(() => {
