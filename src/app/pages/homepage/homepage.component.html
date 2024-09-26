@@ -18,7 +18,7 @@
         <div class="d-flex justify-content-between align-items-center">
           <h4 class="purple-text mb-0">Ultimi 5 Movimenti</h4>
           <button class="btn btn-outline-primary" (click)="navigateToMovimenti()">
-            Vai ai Movimenti
+            Vai a tutti i Movimenti
           </button>
         </div>
       </div>
@@ -26,31 +26,9 @@
 
       <ng-container *ngIf="(movimenti$ | async)!.length > 0; else noMovimenti">
         <div class="col-12 col-md-8 mb-4" *ngFor="let movimento of movimenti$ | async">
-          <div class="card custom-card" (click)="openModal(movimento)">
-            <div class="card-body">
-              <div class="d-flex justify-content-between align-items-start">
-                <div>
-                  <h5 class="card-title">{{ movimento.descrizioneEstesa.charAt(0).toUpperCase() + movimento.descrizioneEstesa.slice(1) }}</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">
-                    Data: {{ movimento.data | date: 'dd/MM/yyyy' }}
-                  </h6>
-                </div>
-                <span
-                  [ngClass]="{
-                    entrata: movimento.categoriaMovimento.tipologia === 'entrata',
-                    uscita: movimento.categoriaMovimento.tipologia === 'uscita'
-                  }"
-                  class="amount"
-                >
-                  {{ movimento.categoriaMovimento.tipologia === 'entrata' ? '+' : '-' }}
-                  {{ movimento.importo | currency: 'EUR' }}
-                </span>
-              </div>
-              <p class="card-text">
-                Categoria: {{ movimento.categoriaMovimento.nomeCategoria }}
-              </p>
-            </div>
-          </div>
+          <app-single-mov
+          [movimento]="movimento"
+          ></app-single-mov>
         </div>
         <div class="d-flex justify-content-center mt-3">
           <button class="fixed-Button excel" (click)="exportToExcel()" data-bs-toggle="tooltip" data-bs-placement="top" title="Export in Excel">

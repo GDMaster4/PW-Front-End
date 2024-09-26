@@ -10,25 +10,12 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './single-mov.component.html',
   styleUrl: './single-mov.component.css'
 })
-export class SingleMovComponent implements OnInit,OnDestroy
+export class SingleMovComponent
 {
   @Input()
   movimento:Movimento | null=null;
-  
-  protected destroyed$ = new Subject<void>();
 
-  constructor(protected activatedRoute: ActivatedRoute,protected modalService: NgbModal) {}
-
-  ngOnInit(): void
-  {
-    this.activatedRoute.data.subscribe(data => console.log(data));    
-  }
-
-  ngOnDestroy(): void
-  {
-    this.destroyed$.next();
-    this.destroyed$.complete();
-  }
+  constructor(protected modalService: NgbModal) {}
 
   openModal(movimento: Movimento)
   {

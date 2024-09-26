@@ -49,12 +49,70 @@ export class MovimentiService
   {
     if(filters.numero === undefined)
     { 
-      filters = {
-        numero: 5
+      if(filters.firstData !== undefined && filters.secondData !== undefined)
+      {
+        const firstData = new Date(filters.firstData);
+        let year = firstData.getFullYear();
+        let month = ('0' + (firstData.getMonth() + 1)).slice(-2); // Adding 1 to month since it's zero-based
+        let day = ('0' + firstData.getDate()).slice(-2);
+        const formattedfirstData = `${year}-${month}-${day}`;
+        const secondData = new Date(filters.secondData);
+        year = secondData.getFullYear();
+        month = ('0' + (secondData.getMonth() + 1)).slice(-2); // Adding 1 to month since it's zero-based
+        day = ('0' + secondData.getDate()).slice(-2);
+        const formattedfsecondData = `${year}-${month}-${day}`;
+        filters = {
+          numero: 99999,
+          firstData:formattedfirstData,
+          secondData:formattedfsecondData,
+          categoria:filters.categoria
+        }
+      }
+      else
+      {
+        filters = {
+          numero: 99999,
+          categoria:filters.categoria
+        }
       }
     }
+    else
+    {
+      if(filters.firstData !== undefined && filters.secondData !== undefined)
+      {
+        const firstData = new Date(filters.firstData);
+        let year = firstData.getFullYear();
+        let month = ('0' + (firstData.getMonth() + 1)).slice(-2); // Adding 1 to month since it's zero-based
+        let day = ('0' + firstData.getDate()).slice(-2);
+        const formattedfirstData = `${year}-${month}-${day}`;
+        const secondData = new Date(filters.secondData);
+        year = secondData.getFullYear();
+        month = ('0' + (secondData.getMonth() + 1)).slice(-2); // Adding 1 to month since it's zero-based
+        day = ('0' + secondData.getDate()).slice(-2);
+        const formattedfsecondData = `${year}-${month}-${day}`;
+        filters = {
+          numero: filters.numero,
+          firstData:formattedfirstData,
+          secondData:formattedfsecondData,
+          categoria:filters.categoria
+        }
+      }
+      else
+      {
+        filters = {
+          numero: filters.numero,
+          categoria:filters.categoria
+        }
+      }
+    }
+
+    console.log(filters)
+
     let q=omitBy(filters,isNil);
     const result=this.http.get<Movimento[]>(`/api/movimenti/${this.conto}`,{params: q});
+    result.subscribe(movimenti=>{
+      this._movimenti$.next(movimenti);
+    });
     return result;
   }
 
