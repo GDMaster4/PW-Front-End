@@ -1,9 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 import { ResolveFn } from '@angular/router';
 
-import { movimentiFiltersResolver } from './mov-filters.resolver';
+import { movimentiFiltersResolver } from './movimenti-filters.resolver';
 
-describe('todoFiltersResolver', () => {
+describe('movimentiFiltersResolver', () => {
   const executeResolver: ResolveFn<boolean> = (...resolverParameters) => 
       TestBed.runInInjectionContext(() => movimentiFiltersResolver(...resolverParameters));
 

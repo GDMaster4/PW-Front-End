@@ -1,12 +1,8 @@
-import {
-  Resolve,
-  RouterStateSnapshot,
-  ActivatedRouteSnapshot
-} from '@angular/router';
-import { Injectable, inject } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Movimento } from '../entities/movimento.entity';
-import { MovimentiFilters, MovimentiService } from '../services/movimenti.service';
+import { MovimentiService, MovimentiFilters } from '../services/movimenti.service';
 
 @Injectable({
   providedIn: 'root'
