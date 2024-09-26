@@ -47,8 +47,11 @@ export class MovimentiService
 
   list(filters:MovimentiFilters)
   {
-    if(filters.numero === undefined){ 
-      filters.numero=5;
+    if(filters.numero === undefined)
+    { 
+      filters = {
+        numero: 5
+      }
     }
     let q=omitBy(filters,isNil);
     const result=this.http.get<Movimento[]>(`/api/movimenti/${this.conto}`,{params: q});
