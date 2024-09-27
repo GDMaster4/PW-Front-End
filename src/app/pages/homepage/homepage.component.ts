@@ -28,6 +28,9 @@ export class HomepageComponent implements OnInit,OnDestroy
 
   ngOnInit(): void
   {
+    window.onbeforeunload = () => {
+      this.authSrv.logout();
+    };
     this.conto$
       .pipe(
         takeUntil(this.destroyed$),
@@ -39,6 +42,7 @@ export class HomepageComponent implements OnInit,OnDestroy
   {
     this.destroyed$.next();
     this.destroyed$.complete();
+    window.onbeforeunload = null; // Rimuove l'evento onbeforeunload
   }
 
   openModal(movimento: Movimento)
