@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { ContoService } from '../../services/conto.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profilo',
@@ -12,12 +13,14 @@ export class ProfiloComponent implements OnInit,OnDestroy
   currentUser$= this.authSrv.currentUser$;
   currentConto$=this.contSrv.conto$;
 
-  constructor(protected authSrv:AuthService,protected contSrv:ContoService){}
+  constructor(protected authSrv:AuthService,protected contSrv:ContoService, protected router:Router){}
 
   ngOnInit()
   {
     window.onbeforeunload = () => {
-      this.authSrv.logout();
+      if (!this.authSrv.URL().includes(this.router.url)) {
+        this.authSrv.logout();
+      }
     };
   }
 

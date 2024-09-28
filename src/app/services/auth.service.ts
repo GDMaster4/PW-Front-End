@@ -92,4 +92,8 @@ export class AuthService
         console.error(error);
       }); 
   }
+
+  URL() {
+    return ["/ricarica","/home","/add-movimento","/movimenti","/profilo"];
+  }
 }

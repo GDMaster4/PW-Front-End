@@ -26,7 +26,9 @@ export class RicaricaComponent implements OnInit,OnDestroy
   ngOnInit()
   {
     window.onbeforeunload = () => {
-      this.authSrv.logout();
+      if (!this.authSrv.URL().includes(this.router.url)) {
+        this.authSrv.logout();
+      }
     };
   }
   

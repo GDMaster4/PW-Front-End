@@ -29,7 +29,9 @@ export class HomepageComponent implements OnInit,OnDestroy
   ngOnInit(): void
   {
     window.onbeforeunload = () => {
-      this.authSrv.logout();
+      if (!this.authSrv.URL().includes(this.router.url)) {
+        this.authSrv.logout();
+      }
     };
     this.conto$
       .pipe(
