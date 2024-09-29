@@ -1,14 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MovimentiService } from '../../services/movimenti.service';
 import { Validators, FormBuilder } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-ricarica',
   templateUrl: './ricarica.component.html',
   styleUrl: './ricarica.component.css'
 })
-export class RicaricaComponent
+export class RicaricaComponent implements OnInit,OnDestroy
 {
   ricaricaForm = this.fb.group({
     NumCell: ['', Validators.required],
@@ -19,7 +20,21 @@ export class RicaricaComponent
   errCell:string="";
   operatori=["Iliad","Vodafone","Tim","Fastweb","Windtre","CoopVoce","VeryMobile","Altro"];
 
-  constructor( protected fb: FormBuilder, protected movSrv: MovimentiService, protected router: Router) {}
+  constructor( protected fb: FormBuilder, protected movSrv: MovimentiService, protected router: Router,
+    protected authSrv:AuthService) {}
+
+  ngOnInit()
+  {
+    window.onbeforeunload = () => {
+      if (!this.authSrv.URL().includes(this.router.url)) {
+        this.authSrv.logout();
+      }
+    };
+  }
+  
+  ngOnDestroy() {
+    window.onbeforeunload = null; // Rimuove l'evento onbeforeunload
+  }
 
   controlloTesto()
   {

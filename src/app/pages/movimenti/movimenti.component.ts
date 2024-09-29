@@ -4,6 +4,7 @@ import { omitBy, isNil } from 'lodash';
 import { ReplaySubject, Subject, takeUntil, map, debounceTime } from 'rxjs';
 import { MovimentiFilters, MovimentiService } from '../../services/movimenti.service';
 import * as XLSX from 'xlsx';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-movimenti',
@@ -16,10 +17,18 @@ export class MovimentiComponent implements OnInit,OnDestroy
   protected destroyed$ = new Subject<void>();
   movimenti$= this.movSrv.movimenti$;
 
-  constructor(protected activatedRoute:ActivatedRoute, protected router:Router, protected movSrv:MovimentiService){}
+  constructor(protected activatedRoute:ActivatedRoute, protected router:Router, protected movSrv:MovimentiService,
+    protected authSrv:AuthService){}
 
   ngOnInit(): void
   {
+    const url=this.router.url.split("?")[0];
+    window.onbeforeunload = () => {
+      this.updateQueryParams$.next({numero:99999});
+      if (!this.authSrv.URL().includes(url)) {
+        this.authSrv.logout();
+      }
+    };
     this.updateQueryParams$
         .pipe(
           takeUntil(this.destroyed$),
@@ -37,6 +46,7 @@ export class MovimentiComponent implements OnInit,OnDestroy
   {
     this.destroyed$.next();
     this.destroyed$.complete();
+    window.onbeforeunload = null; // Rimuove l'evento onbeforeunload
   }
   
   applyFilters(value: MovimentiFilters) {

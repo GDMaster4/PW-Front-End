@@ -118,7 +118,6 @@ export class MovimentiService
 
   add(importo:number,categoria:string,descEstesa:string, destinatarioIban?:string)
   {
-    console.log(categoria)
     let newMov;    
     if(destinatarioIban === undefined)
     {
