@@ -4,7 +4,7 @@
         "secure":false,
         "changeOrigin": true,
         "headers": {
-            "Host": "pw-back-end-fo4a.onrender.com"
+            "Host": "five-bank.vercel.app"
         }
     }
 }
