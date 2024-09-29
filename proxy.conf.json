@@ -4,7 +4,11 @@
         "secure":false,
         "changeOrigin": true,
         "headers": {
-            "Host": "five-bank.vercel.app"
-        }
+            "Host": "pw-back-end-fo4a.onrender.com"
+        },
+        "allowedHosts": [
+            "five-bank.vercel.app",
+            "five-bank-gdmaster4s-projects.vercel.app"
+        ]
     }
 }
