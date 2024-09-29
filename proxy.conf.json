@@ -1,14 +1,14 @@
-{
+{    
+    "allowedHosts": [
+        "five-bank.vercel.app",
+        "five-bank-gdmaster4s-projects.vercel.app"
+    ],
     "/api":{
         "target":"https://pw-back-end-fo4a.onrender.com",
         "secure":false,
         "changeOrigin": true,
         "headers": {
             "Host": "pw-back-end-fo4a.onrender.com"
-        },
-        "allowedHosts": [
-            "five-bank.vercel.app",
-            "five-bank-gdmaster4s-projects.vercel.app"
-        ]
+        }
     }
 }
