@@ -23,8 +23,8 @@ export class MovimentiComponent implements OnInit,OnDestroy
   ngOnInit(): void
   {
     const url=this.router.url.split("?")[0];
-    console.log(url)
     window.onbeforeunload = () => {
+      this.updateQueryParams$.next({numero:99999});
       if (!this.authSrv.URL().includes(url)) {
         this.authSrv.logout();
       }
