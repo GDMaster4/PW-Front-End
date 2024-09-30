@@ -157,6 +157,7 @@ export class MovimentiService
 
   aperturaConto()
   {
+    this.contoSrv.add();
     this.http.post<Movimento>("/api/movimenti/add-conto", {})
       .subscribe(addMov => {
         const tmp = structuredClone(this._movimenti$.value);
