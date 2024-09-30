@@ -27,7 +27,7 @@ export class HomepageComponent implements OnInit,OnDestroy
     protected activatedRoute: ActivatedRoute, protected authSrv:AuthService,private modalService: NgbModal) {}
 
   ngOnInit(): void
-  {
+  { this.movSrv.fetch();
     window.onbeforeunload = () => {
       if (!this.authSrv.URL().includes(this.router.url)) {
         this.authSrv.logout();
