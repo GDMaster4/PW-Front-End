@@ -25,6 +25,7 @@ import { MovimentiComponent } from './pages/movimenti/movimenti.component';
 import { MovimentiService } from './services/movimenti.service';
 import { ContoService } from './services/conto.service';
 import { SingleMovComponent } from './components/single-mov/single-mov.component';
+import { AlertComponent } from './components/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { SingleMovComponent } from './components/single-mov/single-mov.component
     ModPasswComponent,
     MovFiltersComponent,
     MovimentiComponent,
-    SingleMovComponent
+    SingleMovComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,

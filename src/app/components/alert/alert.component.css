@@ -1,0 +1,46 @@
+/* Stile generale per l'alert */
+.alert {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #d4bfff    ; /* Rosso acceso, ma meno aggressivo */
+    color: white;
+    padding: 15px 30px;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    border-radius: 8px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    min-width: 300px;
+    max-width: 500px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Mostrare l'alert con animazione */
+.alert.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Pulsante di chiusura dell'alert */
+.alert button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 15px;
+    transition: color 0.2s ease;
+}
+
+/* Effetto hover sul pulsante */
+.alert button:hover {
+    color: #ffcccb; /* Colore leggermente più chiaro al passaggio del mouse */
+}

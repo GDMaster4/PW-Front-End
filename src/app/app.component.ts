@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Route } from '@angular/router';
 import { AuthService } from './services/auth.service';
+import { AlertComponent } from './components/alert/alert.component';
 
 @Component({
   selector: 'app-root',
@@ -17,4 +18,6 @@ export class AppComponent
   logout(){
     this.authSrv.logout()
   }
+
+  
 }

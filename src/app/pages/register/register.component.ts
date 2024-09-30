@@ -1,9 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { User } from '../../entities/user.entity';
+import { AlertComponent } from '../../components/alert/alert.component';
 
 @Component({
   selector: 'app-register',
@@ -52,6 +53,12 @@ export class RegisterComponent implements OnInit, OnDestroy
 
     await this.authSrv.register(user);
     this.registerForm.reset();
-    alert("Controlla la tua casella di posta")
+    this.alertComponent.showAlert("CONTROLLA LA TUA EMAIL");
+  }
+
+  @ViewChild(AlertComponent) alertComponent!: AlertComponent;
+
+  triggerAlert(msg:string) {
+    this.alertComponent.showAlert(msg);
   }
 }
