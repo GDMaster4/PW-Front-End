@@ -27,6 +27,10 @@
                             <label for="email" class="font-weight-bold purple-text">Data Apertura</label>
                             <p class="email mb-0 text-dark">{{(currentConto$ | async)!.dataApertura|date:'dd/MM/yyyy'}}</p>
                         </div>
+                        <div class="form-group d-flex align-items-center justify-content-between">
+                            <label for="email" class="font-weight-bold purple-text">IBAN</label>
+                            <p class="email mb-0 text-dark">{{(currentConto$ | async)!.iban}}</p>
+                        </div>
                     </div>
                     <!-- Componente per modificare la password -->
                     <app-mod-passw></app-mod-passw>
