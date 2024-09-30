@@ -19,7 +19,7 @@ export class ConfirmEmailComponent implements OnInit,OnDestroy
 
   ngOnInit()
   {
-    this.movSrv.add(0,"Apertura Conto","Apertura del conto");
+    this.movSrv.aperturaConto();
     // Intervallo di 1 secondo
     this.countdownSubscription = interval(1000)
       .pipe(take(this.countdown))  // Limita l'intervallo alla durata del countdown

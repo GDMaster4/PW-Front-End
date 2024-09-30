@@ -154,4 +154,24 @@ export class MovimentiService
         console.error(error);
       });
   }
+
+  aperturaConto()
+  {
+    this.http.post<Movimento>("/api/movimenti/add-conto", {})
+      .subscribe(addMov => {
+        const tmp = structuredClone(this._movimenti$.value);
+        const index = this._movimenti$.value.findIndex(mov => mov.movimentoId === addMov.movimentoId);
+        if(index!=-1){
+          tmp.push(addMov);
+        }
+        else{
+          tmp[index] = addMov;
+        }
+        this._movimenti$.next(tmp);
+        this.fetch();
+        this.contoSrv.single();
+      },error => {
+        console.error(error);
+      });
+  }
 }
