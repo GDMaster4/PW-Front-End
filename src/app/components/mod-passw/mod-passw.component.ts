@@ -27,12 +27,6 @@ export class ModPasswComponent implements OnInit, OnDestroy
     
   ngOnInit(): void
   {
-    this.countdownSubscription = interval(1000)
-      .pipe(take(this.countdown))  // Limita l'intervallo alla durata del countdown
-      .subscribe({
-        next: (value) => this.countdown -= 1,
-        complete: () => this.redirect()
-      });
   }
 
   ngOnDestroy()
@@ -44,12 +38,13 @@ export class ModPasswComponent implements OnInit, OnDestroy
 
   redirect()
   {
-    // Reindirizza alla pagina desiderata
-    this.router.navigate(['/home']);
+    this.modalService.dismissAll();
+    this.countdownSubscription.unsubscribe();
   }
 
   open(content: TemplateRef<any>)
   {
+    this.countdown=30;
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' })
     .result.then(
       (result) => {
@@ -59,10 +54,17 @@ export class ModPasswComponent implements OnInit, OnDestroy
         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;       
       },
     );
+    this.countdownSubscription = interval(1000)
+      .pipe(take(this.countdown))  // Limita l'intervallo alla durata del countdown
+      .subscribe({
+        next: (value) =>{ this.countdown -= 1;console.log(this.countdown);},
+        complete: () => this.redirect()
+      });
   }
 
 	private getDismissReason(reason: any): string
   {
+    this.countdownSubscription.unsubscribe();
 		switch (reason)
     {
 			case ModalDismissReasons.ESC:
