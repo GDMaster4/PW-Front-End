@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit, OnDestroy
   redirect()
   {
     this.loginForm.reset();
-    this.countdownSubscription.unsubscribe();
+    this.countdown=30;
   }
 
   /**
