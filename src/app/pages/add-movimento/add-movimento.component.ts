@@ -76,7 +76,9 @@ export class AddMovimentoComponent
         if(this.ibans.includes(iban!))
         {
           this.movSrv.add(importo!,catInvio,casuale!,iban!);
-          this.router.navigate(['/home']);
+          setTimeout(() => {
+            this.router.navigate(['/home']);
+          }, 5000);
         }
         else {
           return;
@@ -85,7 +87,9 @@ export class AddMovimentoComponent
       else
       {
         this.movSrv.add(importo!,catInvio,casuale!);
-        this.router.navigate(['/home']);
+        setTimeout(() => {
+          this.router.navigate(['/home']);
+        }, 5000);
       }
     }
   }

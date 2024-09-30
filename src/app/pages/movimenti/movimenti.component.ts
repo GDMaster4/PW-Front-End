@@ -18,7 +18,10 @@ export class MovimentiComponent implements OnInit,OnDestroy
   movimenti$= this.movSrv.movimenti$;
 
   constructor(protected activatedRoute:ActivatedRoute, protected router:Router, protected movSrv:MovimentiService,
-    protected authSrv:AuthService){}
+    protected authSrv:AuthService)
+  {
+    router.navigate(["/movimenti"]);
+  }
 
   ngOnInit(): void
   {
