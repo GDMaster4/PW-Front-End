@@ -46,16 +46,19 @@ export class RegisterComponent implements OnInit, OnDestroy
 
   async register()
   {
-    const user: User = {
-      nomeTitolare: this.registerForm.get("nomeTitolare")?.value || '',
-      cognomeTitolare: this.registerForm.get("cognomeTitolare")?.value || '',
-      email: this.registerForm.get("email")?.value || '',
-      password: this.registerForm.get("password")?.value || ''
-    };
-
-    await this.authSrv.register(user);
-    this.registerForm.reset();
-    this.triggerAlert("CONTROLLA LA TUA EMAIL");
+    if(this.registerForm.valid &&(this.registerForm.get("email")?.value?.endsWith(".com") ||this.registerForm.get("email")?.value?.endsWith(".it")))
+    {
+      const user: User = {
+        nomeTitolare: this.registerForm.get("nomeTitolare")?.value || '',
+        cognomeTitolare: this.registerForm.get("cognomeTitolare")?.value || '',
+        email: this.registerForm.get("email")?.value || '',
+        password: this.registerForm.get("password")?.value || ''
+      };
+  
+      await this.authSrv.register(user);
+      this.registerForm.reset();
+      this.triggerAlert("CONTROLLA LA TUA EMAIL");
+    }
   }
 
   controlloTesto()
