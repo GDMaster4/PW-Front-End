@@ -13,8 +13,9 @@ export class ContoService
 {
   private _conto$ = new BehaviorSubject<Conto | null>(null);
   conto$ = this._conto$.asObservable();
+  protected alert = new AlertComponent();
   
-  constructor(protected http:HttpClient, protected authSrv:AuthService, protected alert:AlertComponent)
+  constructor(protected http:HttpClient, protected authSrv:AuthService)
   {
     this.authSrv.currentUser$
       .subscribe(user => {

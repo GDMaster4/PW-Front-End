@@ -13,8 +13,9 @@ export class AuthService
 {
   private _currentUser$ = new BehaviorSubject<User | null>(null);
   currentUser$ = this._currentUser$.asObservable();
+  protected alert = new AlertComponent();
 
-  constructor( protected http: HttpClient,  protected jwt: JwtService, protected router: Router,protected alert:AlertComponent) {
+  constructor( protected http: HttpClient,  protected jwt: JwtService, protected router: Router) {
     this.fetchUser();
   }
 

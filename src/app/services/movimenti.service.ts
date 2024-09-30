@@ -22,8 +22,9 @@ export class MovimentiService
   protected _movimenti$ = new BehaviorSubject<Movimento[]>([]);
   movimenti$ = this._movimenti$.asObservable();
   protected conto:string="";
+  protected alert = new AlertComponent();
 
-  constructor(protected http:HttpClient, protected contoSrv:ContoService, protected alert:AlertComponent)
+  constructor(protected http:HttpClient, protected contoSrv:ContoService)
   {
     this.contoSrv.conto$
       .subscribe(conto => {
