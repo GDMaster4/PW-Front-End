@@ -116,6 +116,19 @@
                       La password deve contenere almeno 8 caratteri, 1 maiuscola, 1 minuscola, 1 numero e 1 carattere speciale (#?!$%^&*-)
                     </p>
                   </div>
+                </div><label for="Conferma">Conferma password</label>
+                <div class="input-group">
+                    <input
+                        id="Conferma"
+                        class="form-control"
+                        name="Conferma"
+                        type="password"
+                        formControlName="Conferma"
+                        (input)="controlloTesto()"
+                    />
+                </div>
+                <div class="text-danger" *ngIf="errConferma">
+                  {{ errConferma }}
                 </div>
                 <!-- Pulsante Iscriviti -->
                 <div class="col-12">

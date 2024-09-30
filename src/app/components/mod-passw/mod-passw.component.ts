@@ -95,10 +95,10 @@ export class ModPasswComponent implements OnInit, OnDestroy
     const nuovaPassw = this.passwForm.getRawValue().nuovaPassw;
     const conferma = this.passwForm.getRawValue().Conferma;
     if(nuovaPassw != conferma) {
-      this.errPassw="La password non è uguale";
+      this.errConferma="La password non è uguale";
     }
     else {
-      this.errPassw="";
+      this.errConferma="";
     }
   }
 

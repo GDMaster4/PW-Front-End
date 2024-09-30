@@ -17,10 +17,12 @@ export class RegisterComponent implements OnInit, OnDestroy
     nomeTitolare: ['', Validators.required],
     cognomeTitolare: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.pattern(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/)]]
+    password: ['', [Validators.required, Validators.pattern(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/)]],
+    Conferma: ['', Validators.required]
   })
 
   registerError = ''
+  errConferma:string="";
   protected destroyed$ = new Subject<void>();
 
   constructor( protected fb : FormBuilder, protected authSrv: AuthService, protected router: Router) {}
@@ -54,6 +56,18 @@ export class RegisterComponent implements OnInit, OnDestroy
     await this.authSrv.register(user);
     this.registerForm.reset();
     this.alertComponent.showAlert("CONTROLLA LA TUA EMAIL");
+  }
+
+  controlloTesto()
+  {
+    const nuovaPassw = this.registerForm.getRawValue().password;
+    const conferma = this.registerForm.getRawValue().Conferma;
+    if(nuovaPassw != conferma) {
+      this.errConferma="La password non è uguale";
+    }
+    else {
+      this.errConferma="";
+    }
   }
 
   @ViewChild(AlertComponent) alertComponent!: AlertComponent;
