@@ -52,8 +52,8 @@ export class RicaricaComponent implements OnInit,OnDestroy
   {
     if(this.ricaricaForm.valid)
     {
-      const {importo,NumCell}= this.ricaricaForm.value!;
-      this.movSrv.add(importo!,"Ricarica",`ricarica del numero ${NumCell}`);
+      const {importo,NumCell,operatore}= this.ricaricaForm.value!;
+      this.movSrv.add(importo!,"Ricarica",`ricarica ${operatore} del numero ${NumCell}`);
       this.ricaricaForm.reset();
       this.router.navigate(['/home']);
     }

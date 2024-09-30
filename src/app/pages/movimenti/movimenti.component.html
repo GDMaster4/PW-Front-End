@@ -1,25 +1,25 @@
 <div class="container mt-5" *ifAuthenticated>
-    <app-mov-filters (filterChange)="applyFilters($event)"></app-mov-filters>
-    <ng-container *ngIf="(movimenti$ | async)!.length > 0; else noMovimenti">
-        <div class="col-12 col-md-8 mb-4" *ngFor="let movimento of movimenti$ | async">
-        <app-single-mov
-        [movimento]="movimento"
-        ></app-single-mov>
-        </div>
-        <div class="d-flex justify-content-center mt-3">
-        <button class="fixed-Button excel" (click)="exportToExcel()" data-bs-toggle="tooltip" data-bs-placement="top" title="Export in Excel">
-            <img src="https://cdn-icons-png.flaticon.com/512/732/732066.png" alt="excel">
-        </button>
-        <button class="fixed-Button csv" (click)="exportToCSV()" data-bs-toggle="tooltip" data-bs-placement="top" title="Export in CSV">
-            <img src="../../../assets/img/export.svg" alt="csv">
-        </button>
-        </div>
-    </ng-container>
-    <ng-template #noMovimenti>
-      <div class="col-12">
-        <div class="alert alert-warning" role="alert">
-          Non ci sono movimenti da mostrare.
-        </div>
+  <app-mov-filters (filterChange)="applyFilters($event)"></app-mov-filters>
+  <ng-container *ngIf="(movimenti$ | async)!.length > 0; else noMovimenti">
+      <div class="col-12 d-flex justify-content-center flex-wrap">
+          <div class="movimento-card mb-4" *ngFor="let movimento of movimenti$ | async">
+              <app-single-mov [movimento]="movimento"></app-single-mov>
+          </div>
       </div>
-    </ng-template>
+      <div class="d-flex justify-content-center mt-3">
+          <button class="fixed-Button excel" (click)="exportToExcel()" data-bs-toggle="tooltip" data-bs-placement="top" title="Export in Excel">
+              <img src="https://cdn-icons-png.flaticon.com/512/732/732066.png" alt="excel">
+          </button>
+          <button class="fixed-Button csv" (click)="exportToCSV()" data-bs-toggle="tooltip" data-bs-placement="top" title="Export in CSV">
+              <img src="../../../assets/img/export.svg" alt="csv">
+          </button>
+      </div>
+  </ng-container>
+  <ng-template #noMovimenti>
+      <div class="col-12">
+          <div class="alert alert-warning" role="alert">
+              Non ci sono movimenti da mostrare.
+          </div>
+      </div>
+  </ng-template>
 </div>

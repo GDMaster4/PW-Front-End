@@ -1,0 +1,22 @@
+.movimento-card {
+    width: 1000px; /* Dimensione fissa per i movimenti */
+    margin: 0 15px; /* Spazio laterale tra le carte */
+    display: block;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fixed-Button {
+    margin: 0 10px;
+}
+
+button img {
+    width: 24px;
+    height: 24px;
+}
+

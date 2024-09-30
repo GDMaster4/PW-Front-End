@@ -9,3 +9,104 @@
     background-color: #7c4a9b; /* Colore viola scuro al passaggio del mouse */
     color: white; /* Testo bianco al passaggio del mouse */
 }
+
+/* Imposta la stessa altezza per tutti i campi input, select e button */
+input[type="number"],
+select,
+input[type="text"],
+input[type="submit"],
+button,
+input[ngbDatepicker] {
+    height: 40px; /* Altezza uniforme per tutti gli input, select, bottoni e campi data */
+    border: 1px solid #8a2be2; /* Bordo viola */
+    border-radius: 4px; /* Aggiunge un piccolo arrotondamento agli angoli */
+    padding: 5px 10px; /* Spaziatura interna per input e select */
+}
+
+/* Allineamento dei bottoni del datepicker */
+.input-group {
+    display: flex; /* Usa flexbox per allineare gli elementi in una riga */
+    align-items: center; /* Allinea verticalmente al centro */
+    width: 100%; /* Assicura che il gruppo si espanda per riempire il contenitore */
+}
+
+/* Impostazione dell'input della data */
+.input-group input[type="text"],
+.input-group input[type="number"] {
+    flex: 0 0 85%; /* Input occupa l'85% del contenitore */
+    height: 40px; /* Altezza uniforme per gli input */
+    border: 1px solid #8a2be2; /* Bordo viola */
+    border-right: none; /* Rimuove il bordo destro per fonderlo col bottone */
+    border-radius: 4px 0 0 4px; /* Arrotondamento a sinistra */
+    font-size: 14px; /* Dimensione del testo */
+}
+
+/* Pulsante del datepicker */
+.input-group button.bi-calendar3 {
+    background-color: #8a2be2; /* Colore di sfondo del pulsante */
+    color: white; /* Colore del testo del pulsante */
+    padding: 0; /* Rimuove padding per rendere il pulsante più piccolo */
+    cursor: pointer; /* Cambia il cursore per indicare un bottone cliccabile */
+    display: flex; /* Usa flex per centrare l'icona */
+    align-items: center; /* Allinea verticalmente al centro */
+    border-radius: 0 4px 4px 0; /* Arrotondamento a destra */
+    height: 40px; /* Altezza del pulsante per mantenere uniformità */
+    flex: 0 0 15%; /* Imposta la larghezza al 15% per il pulsante */
+    margin-left: -1px; /* Rimuove il gap tra l'input e il pulsante */
+}
+
+/* Freccia come contenuto del pulsante */
+.input-group button.bi-calendar3::after {
+    content: '▼'; /* Freccia verso il basso */
+    font-size: 12px; /* Dimensione della freccia */
+    margin-left: 5px; /* Distanza dalla freccia all'input */
+}
+
+.input-group button.bi-calendar3:hover {
+    background-color: white; /* Colore di sfondo al passaggio del mouse */
+    color: #8a2be2; /* Colore del testo al passaggio del mouse */
+}
+
+.input-group button.bi-calendar3:hover::after {
+    color: #8a2be2; /* Colore della freccia al passaggio del mouse */
+}
+
+/* Effetto focus per input e button */
+input:focus,
+select:focus,
+button:focus {
+    border-color: #7a1db3; /* Bordo più scuro quando il campo è in focus */
+    outline: none; /* Rimuove il bordo esterno predefinito */
+}
+
+/* Layout per garantire la centratura e spaziatura tra i campi */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* Spaziatura tra le colonne */
+}
+
+/* Colonna per i campi */
+.col {
+    flex: 1; /* Adatta le colonne allo spazio disponibile */
+    min-width: 200px; /* Larghezza minima per le colonne */
+}
+
+/* Per etichette */
+label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Stile per il bottone di invio */
+input[type="submit"] {
+    background-color: white;
+    color: #8a2be2;
+    border-color: #8a2be2;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #8a2be2;
+    color: white;
+}
