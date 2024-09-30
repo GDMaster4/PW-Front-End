@@ -118,6 +118,10 @@ export class MovimentiService
 
   add(importo:number,categoria:string,descEstesa:string, destinatarioIban?:string)
   {
+    if(importo ==0 && categoria=="Apertura Conto" && descEstesa=="Apertura del conto" && destinatarioIban== undefined) {      
+      this.contoSrv.add();
+    }
+
     let newMov;    
     if(destinatarioIban === undefined)
     {
