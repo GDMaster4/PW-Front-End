@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
-import { catchError, Subject, takeUntil, throwError } from 'rxjs';
+import { catchError, interval, Subject, Subscription, take, takeUntil, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +17,9 @@ export class LoginComponent implements OnInit, OnDestroy
   });
 
   loginError = '';
+  countdown: number = 30;  // Numero di secondi del countdown
+  private countdownSubscription!: Subscription;
+
 
   protected destroyed$ = new Subject<void>();
 
@@ -39,12 +42,27 @@ export class LoginComponent implements OnInit, OnDestroy
       .subscribe(() => {
         this.loginError = '';
       });
+    this.countdownSubscription = interval(1000)
+      .pipe(take(this.countdown))  // Limita l'intervallo alla durata del countdown
+      .subscribe({
+        next: (value) =>{ this.countdown -= 1;console.log(this.countdown);},
+        complete: () => this.redirect()
+      });
   }
 
   ngOnDestroy()
   {
     this.destroyed$.next();
-    this.destroyed$.complete();
+    this.destroyed$.complete();    
+    if (this.countdownSubscription) {
+      this.countdownSubscription.unsubscribe();
+    }
+  }
+  
+  redirect()
+  {
+    this.loginForm.reset();
+    this.countdownSubscription.unsubscribe();
   }
 
   /**
