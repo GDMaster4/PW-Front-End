@@ -4,6 +4,7 @@ import { BehaviorSubject, catchError, map, Observable, of, tap, throwError } fro
 import { Router } from '@angular/router';
 import { JwtService } from './jwt.service';
 import { User } from '../entities/user.entity';
+import { AlertComponent } from '../components/alert/alert.component';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class AuthService
   private _currentUser$ = new BehaviorSubject<User | null>(null);
   currentUser$ = this._currentUser$.asObservable();
 
-  constructor( protected http: HttpClient,  protected jwt: JwtService, protected router: Router ) {
+  constructor( protected http: HttpClient,  protected jwt: JwtService, protected router: Router,protected alert:AlertComponent) {
     this.fetchUser();
   }
 
@@ -60,7 +61,7 @@ export class AuthService
       .subscribe(user=>{},
           error=> {
             // Handling errori
-            console.error(error);
+            this.alert.showAlert(error);
           }
       );
   }
@@ -89,7 +90,7 @@ export class AuthService
         this._currentUser$.next(tmp);
         this.fetchUser();
       },error => {
-        console.error(error);
+        this.alert.showAlert(error);
       }); 
   }
 

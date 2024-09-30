@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { isNil, omitBy } from 'lodash';
 import { ContoService } from './conto.service';
+import { AlertComponent } from '../components/alert/alert.component';
 
 export interface MovimentiFilters
 {
@@ -22,7 +23,7 @@ export class MovimentiService
   movimenti$ = this._movimenti$.asObservable();
   protected conto:string="";
 
-  constructor(protected http:HttpClient, protected contoSrv:ContoService)
+  constructor(protected http:HttpClient, protected contoSrv:ContoService, protected alert:AlertComponent)
   {
     this.contoSrv.conto$
       .subscribe(conto => {
@@ -151,7 +152,7 @@ export class MovimentiService
         this.fetch();
         this.contoSrv.single();
       },error => {
-        console.error(error);
+        this.alert.showAlert(error);
       });
   }
 
@@ -171,7 +172,7 @@ export class MovimentiService
         this.fetch();
         this.contoSrv.single();
       },error => {
-        console.error(error);
+        this.alert.showAlert(error);
       });
   }
 }

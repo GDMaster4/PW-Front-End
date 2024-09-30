@@ -4,6 +4,7 @@ import { BehaviorSubject, map } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { MovimentiService } from './movimenti.service';
+import { AlertComponent } from '../components/alert/alert.component';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class ContoService
   private _conto$ = new BehaviorSubject<Conto | null>(null);
   conto$ = this._conto$.asObservable();
   
-  constructor(protected http:HttpClient, protected authSrv:AuthService)
+  constructor(protected http:HttpClient, protected authSrv:AuthService, protected alert:AlertComponent)
   {
     this.authSrv.currentUser$
       .subscribe(user => {
@@ -41,7 +42,7 @@ export class ContoService
         this._conto$.next(addConto);
         this.single();
       },error => {
-        console.error(error);
+        this.alert.showAlert(error);
       });
   }
 
