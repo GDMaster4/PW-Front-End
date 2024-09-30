@@ -42,7 +42,6 @@ export class MovimentiService
     this.http.get<Movimento[]>(`/api/movimenti/${this.conto}?numero=5`)
       .subscribe(movimenti=>{
         this._movimenti$.next(movimenti);
-        this.contoSrv.single();
       });
   }
 
@@ -113,7 +112,6 @@ export class MovimentiService
     const result=this.http.get<Movimento[]>(`/api/movimenti/${this.conto}`,{params: q});
     result.subscribe(movimenti=>{
       this._movimenti$.next(movimenti);
-      this.contoSrv.single();
     });
     return result;
   }
