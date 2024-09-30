@@ -1,6 +1,0 @@
-{  
-    "/api":{
-        "target":"https://pw-back-end-fo4a.onrender.com",
-        "secure":false
-    }
-}

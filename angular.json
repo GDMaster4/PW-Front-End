@@ -29,6 +29,7 @@
             "polyfills": [
               "zone.js"
             ],
+            "baseHref": "/BankingApp/",
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
@@ -75,9 +76,6 @@
             "development": {
               "buildTarget": "BankingApp:build:development"
             }
-          },
-          "options": {
-            "proxyConfig": "./proxy.conf.json"
           },
           "defaultConfiguration": "development"
         },

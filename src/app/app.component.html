@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <!-- Logo or Brand Name -->
     <a class="navbar-brand fw-bold" [routerLink]="['/home']" (click)="home()">
-      <img src="../assets/img/logo senza sfondo.png" style="height: 75px; width: 115px;">
+      <img src="assets/img/logo senza sfondo.png" style="height: 75px; width: 115px;">
     </a>
 
     <!-- Toggler for mobile view -->
@@ -14,13 +14,13 @@
     <!-- Navbar Links -->
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav me-auto">
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="(currentUser$ | async)">
           <a class="nav-link text-white" [routerLink]="['/ricarica']" (click)="premuto($event)">RICARICA</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="(currentUser$ | async)">
           <a class="nav-link text-white" [routerLink]="['/add-movimento']" (click)="premuto($event)">CREA MOVIMENTO</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="(currentUser$ | async)">
           <a class="nav-link text-white" [routerLink]="['/movimenti']" (click)="premuto($event)">MOVIMENTI</a>
         </li>
       </ul>

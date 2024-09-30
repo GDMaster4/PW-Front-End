@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { MovimentiService } from './movimenti.service';
 import { AlertComponent } from '../components/alert/alert.component';
+import { enviroment } from '../../../collegamento';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +31,7 @@ export class ContoService
 
   single()
   {
-    this.http.get<Conto>("api/conto")
+    this.http.get<Conto>(`${enviroment.apiUrl}/api/conto`)
       .subscribe(conto=>{
         this._conto$.next(conto);
       });
@@ -38,7 +39,7 @@ export class ContoService
 
   add()
   {
-    this.http.post<Conto>("/api/conto/add",{})
+    this.http.post<Conto>(`${enviroment.apiUrl}/api/conto/add`,{})
       .subscribe(addConto => {
         this._conto$.next(addConto);
         this.single();
@@ -49,7 +50,7 @@ export class ContoService
 
   list()
   {
-    const conti= this.http.get<Conto[]>("/api/conto/all")
+    const conti= this.http.get<Conto[]>(`${enviroment.apiUrl}/api/conto/all`)
       .pipe(
         map(conti => conti.filter(conto => conto.iban !== this._conto$.value?.iban))
       );

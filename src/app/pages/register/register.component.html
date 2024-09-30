@@ -116,7 +116,8 @@
                       La password deve contenere almeno 8 caratteri, 1 maiuscola, 1 minuscola, 1 numero e 1 carattere speciale (#?!$%^&*-)
                     </p>
                   </div>
-                </div><label for="Conferma">Conferma password</label>
+                </div>
+                <label for="Conferma" class="form-label text-primary purple-text fw-bold">Conferma password</label>
                 <div class="input-group">
                     <input
                         id="Conferma"
@@ -124,6 +125,7 @@
                         name="Conferma"
                         type="password"
                         formControlName="Conferma"
+                        placeholder="Inserisci di nuovo la password"
                         (input)="controlloTesto()"
                     />
                 </div>

@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { JwtService } from './jwt.service';
 import { User } from '../entities/user.entity';
 import { AlertComponent } from '../components/alert/alert.component';
+import { enviroment } from '../../../collegamento';
 
 @Injectable({
   providedIn: 'root'
@@ -35,7 +36,7 @@ export class AuthService
    */
   login(email: string, password: string)
   {
-    return this.http.post<{user: User, token: string}>("/api/login", {email, password})
+    return this.http.post<{user: User, token: string}>(`${enviroment.apiUrl}/api/login`, {email, password})
       .pipe(
         tap(res => this.jwt.setToken(res.token)),
         map(res => res.user)
@@ -58,7 +59,7 @@ export class AuthService
    */
   register(userData: User): void
   {
-    this.http.post<User>("/api/register", userData)
+    this.http.post<User>(`${enviroment.apiUrl}/api/register`, userData)
       .subscribe(user=>{},
           error=> {
             // Handling errori
@@ -69,13 +70,13 @@ export class AuthService
 
   fetchUser()
   {
-    this.http.get<User>("api/user/me")
+    this.http.get<User>(`${enviroment.apiUrl}/api/user/me`)
       .subscribe(user=>this._currentUser$.next(user));
   }
 
   fetchUsers()
   {
-    const utenti=this.http.get<User[]>("api/user")
+    const utenti=this.http.get<User[]>(`${enviroment.apiUrl}/api/user`)
       .pipe(
         map(users => users.filter(user => user.id !== this._currentUser$.value?.id))
       );
@@ -84,7 +85,7 @@ export class AuthService
 
   modPassw(nuovaPassw:string)
   {
-    this.http.patch<User>("api/user",{nuovaPassw:nuovaPassw})
+    this.http.patch<User>(`${enviroment.apiUrl}api/user`,{nuovaPassw:nuovaPassw})
       .subscribe(updated => {
         let tmp = structuredClone(this._currentUser$.value);
         tmp = updated;

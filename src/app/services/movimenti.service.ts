@@ -5,6 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { isNil, omitBy } from 'lodash';
 import { ContoService } from './conto.service';
 import { AlertComponent } from '../components/alert/alert.component';
+import { enviroment } from '../../../collegamento';
 
 export interface MovimentiFilters
 {
@@ -41,7 +42,7 @@ export class MovimentiService
 
   fetch()
   {
-    this.http.get<Movimento[]>(`/api/movimenti/${this.conto}?numero=5`)
+    this.http.get<Movimento[]>(`${enviroment.apiUrl}/api/movimenti/${this.conto}?numero=5`)
       .subscribe(movimenti=>{
         this._movimenti$.next(movimenti);
       });
@@ -111,7 +112,7 @@ export class MovimentiService
     console.log(filters)
 
     let q=omitBy(filters,isNil);
-    const result=this.http.get<Movimento[]>(`/api/movimenti/${this.conto}`,{params: q});
+    const result=this.http.get<Movimento[]>(`${enviroment.apiUrl}/api/movimenti/${this.conto}`,{params: q});
     result.subscribe(movimenti=>{
       this._movimenti$.next(movimenti);
     });
@@ -139,7 +140,7 @@ export class MovimentiService
       }
     }
 
-    this.http.post<Movimento>("/api/movimenti", newMov)
+    this.http.post<Movimento>(`${enviroment.apiUrl}/api/movimenti`, newMov)
       .subscribe(addMov => {
         const tmp = structuredClone(this._movimenti$.value);
         const index = this._movimenti$.value.findIndex(mov => mov.movimentoId === addMov.movimentoId);
@@ -159,7 +160,7 @@ export class MovimentiService
 
   aperturaConto()
   {
-    this.http.post<Movimento>("/api/movimenti/add-conto", {})
+    this.http.post<Movimento>(`${enviroment.apiUrl}/api/movimenti/add-conto`, {})
       .subscribe(addMov => {
         const tmp = structuredClone(this._movimenti$.value);
         const index = this._movimenti$.value.findIndex(mov => mov.movimentoId === addMov.movimentoId);
