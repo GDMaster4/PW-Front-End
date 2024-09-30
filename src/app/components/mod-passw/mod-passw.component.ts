@@ -1,15 +1,16 @@
-import { Component, TemplateRef } from '@angular/core';
+import { Component, OnDestroy, OnInit, TemplateRef } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { interval, Subscription, take } from 'rxjs';
 
 @Component({
   selector: 'app-mod-passw',
   templateUrl: './mod-passw.component.html',
   styleUrl: './mod-passw.component.css'
 })
-export class ModPasswComponent
+export class ModPasswComponent implements OnInit, OnDestroy
 {
   passwForm = this.fb.group({
     nuovaPassw: ['', [Validators.required, Validators.pattern(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/)]],
@@ -17,10 +18,35 @@ export class ModPasswComponent
   });
   errPassw:string="";
   errConferma:string="";
+  countdown: number = 30;  // Numero di secondi del countdown
+  private countdownSubscription!: Subscription;
 
 	closeResult = '';
   constructor(protected modalService: NgbModal, protected fb: FormBuilder, protected authSrv:AuthService,
     protected router:Router){}
+    
+  ngOnInit(): void
+  {
+    this.countdownSubscription = interval(1000)
+      .pipe(take(this.countdown))  // Limita l'intervallo alla durata del countdown
+      .subscribe({
+        next: (value) => this.countdown -= 1,
+        complete: () => this.redirect()
+      });
+  }
+
+  ngOnDestroy()
+  {
+    if (this.countdownSubscription) {
+      this.countdownSubscription.unsubscribe();
+    }
+  }
+
+  redirect()
+  {
+    // Reindirizza alla pagina desiderata
+    this.router.navigate(['/home']);
+  }
 
   open(content: TemplateRef<any>)
   {
