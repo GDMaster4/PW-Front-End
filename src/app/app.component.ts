@@ -32,5 +32,15 @@ export class AppComponent
       }
     }
   }
+
+  home()
+  {
+    const links= document.getElementsByClassName("nav-link text-white");
+    for (let i = 0; i < links.length; i++)
+    {
+      const link= links[i] as HTMLElement;
+      link.style.textDecoration = "none"; // Aggiungi decorazione del testo
+    }
+  }
   
 }
