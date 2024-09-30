@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { catchError, interval, Subject, Subscription, take, takeUntil, throwError } from 'rxjs';
+import { AlertComponent } from '../../components/alert/alert.component';
 
 @Component({
   selector: 'app-login',
@@ -62,6 +63,8 @@ export class LoginComponent implements OnInit, OnDestroy
   redirect()
   {
     this.loginForm.reset();
+    const alert= new AlertComponent();
+    alert.showAlert("Ci hai messo troppo tempo a fare il login");
     this.countdown=30;
   }
 
