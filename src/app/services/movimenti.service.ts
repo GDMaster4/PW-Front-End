@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ViewChild } from '@angular/core';
 import { Movimento } from '../entities/movimento.entity';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -23,7 +23,11 @@ export class MovimentiService
   protected _movimenti$ = new BehaviorSubject<Movimento[]>([]);
   movimenti$ = this._movimenti$.asObservable();
   protected conto:string="";
-  protected alert = new AlertComponent();
+  @ViewChild(AlertComponent) alertComponent!: AlertComponent;
+
+  triggerAlert(msg:string) {
+    this.alertComponent.showAlert(msg);
+  }
 
   constructor(protected http:HttpClient, protected contoSrv:ContoService)
   {
@@ -154,7 +158,7 @@ export class MovimentiService
         this.fetch();
         this.contoSrv.single();
       },error => {
-        this.alert.showAlert(error);
+        this.triggerAlert(error);
       });
   }
 
@@ -174,7 +178,7 @@ export class MovimentiService
         this.fetch();
         this.contoSrv.single();
       },error => {
-        this.alert.showAlert(error);
+        this.triggerAlert(error);
       });
   }
 }

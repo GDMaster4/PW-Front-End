@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ViewChild } from '@angular/core';
 import { Conto } from '../entities/conto.entity';
 import { BehaviorSubject, map } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -14,7 +14,11 @@ export class ContoService
 {
   private _conto$ = new BehaviorSubject<Conto | null>(null);
   conto$ = this._conto$.asObservable();
-  protected alert = new AlertComponent();
+  @ViewChild(AlertComponent) alertComponent!: AlertComponent;
+
+  triggerAlert(msg:string) {
+    this.alertComponent.showAlert(msg);
+  }
   
   constructor(protected http:HttpClient, protected authSrv:AuthService)
   {
@@ -44,7 +48,7 @@ export class ContoService
         this._conto$.next(addConto);
         this.single();
       },error => {
-        this.alert.showAlert(error);
+        this.triggerAlert(error);
       });
   }
 

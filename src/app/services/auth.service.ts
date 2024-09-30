@@ -1,5 +1,5 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, ViewChild } from '@angular/core';
 import { BehaviorSubject, catchError, map, Observable, of, tap, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import { JwtService } from './jwt.service';
@@ -14,7 +14,11 @@ export class AuthService
 {
   private _currentUser$ = new BehaviorSubject<User | null>(null);
   currentUser$ = this._currentUser$.asObservable();
-  protected alert = new AlertComponent();
+  @ViewChild(AlertComponent) alertComponent!: AlertComponent;
+
+  triggerAlert(msg:string) {
+    this.alertComponent.showAlert(msg);
+  }
 
   constructor( protected http: HttpClient,  protected jwt: JwtService, protected router: Router) {
     this.fetchUser();
@@ -63,7 +67,7 @@ export class AuthService
       .subscribe(user=>{},
           error=> {
             // Handling errori
-            this.alert.showAlert(error);
+            this.triggerAlert(error);
           }
       );
   }
@@ -92,7 +96,7 @@ export class AuthService
         this._currentUser$.next(tmp);
         this.fetchUser();
       },error => {
-        this.alert.showAlert(error);
+        this.triggerAlert(error);
       }); 
   }
 

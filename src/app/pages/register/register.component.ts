@@ -55,7 +55,7 @@ export class RegisterComponent implements OnInit, OnDestroy
 
     await this.authSrv.register(user);
     this.registerForm.reset();
-    this.alertComponent.showAlert("CONTROLLA LA TUA EMAIL");
+    this.triggerAlert("CONTROLLA LA TUA EMAIL");
   }
 
   controlloTesto()
