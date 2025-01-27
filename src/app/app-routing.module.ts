@@ -58,6 +58,7 @@ const routes: Routes = [
   },
   {
     path: 'confirm',
+    pathMatch:"prefix",
     component:ConfirmEmailComponent
   },
   {
