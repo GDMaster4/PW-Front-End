@@ -162,9 +162,9 @@ export class MovimentiService
       });
   }
 
-  aperturaConto()
+  aperturaConto(id:string)
   {
-    this.http.post<Movimento>(`${enviroment.apiUrl}/api/movimenti/add-conto`, {})
+    this.http.post<Movimento>(`${enviroment.apiUrl}/api/movimenti/add-conto/${id}`, {})
       .subscribe(addMov => {
         const tmp = structuredClone(this._movimenti$.value);
         const index = this._movimenti$.value.findIndex(mov => mov.movimentoId === addMov.movimentoId);
